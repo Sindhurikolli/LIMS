@@ -100,19 +100,26 @@ public class CreateProtocol extends LoginDetails {
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 		Thread.sleep(4000);
 		sno++;
-		driver.findElement(By.id("purposeInProtocolForm_ifr")).sendKeys(properties.getProperty("Objective"));
+		driver.switchTo().frame("purposeInProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Objective"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Purpose", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("productInformationProtocolForm_ifr")).sendKeys(properties.getProperty("Responsibilities"));
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("productInformationProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Responsibilities"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Product Information", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("productDescProtocolForm_ifr")).sendKeys(properties.getProperty("StabilityPlan"));
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("productDescProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("StabilityPlan"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Product Description", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("selOfBatchesInProtocolForm_ifr")).sendKeys(properties.getProperty("Procedure"));
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("selOfBatchesInProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Procedure"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Selection Of Batches", sno, false);
 		Thread.sleep(2000);
 		sno++;
@@ -427,7 +434,7 @@ public class CreateProtocol extends LoginDetails {
 				sno++;
 				Thread.sleep(2000);
 				
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[3]")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[3]")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add", sno, false);				
 				sno++;
 				Thread.sleep(2000);
@@ -446,7 +453,7 @@ public class CreateProtocol extends LoginDetails {
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Schedule Interval type", sno, false);				
 				sno++;
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on view", sno, false);				
 				sno++;
 				Thread.sleep(2000);

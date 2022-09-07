@@ -101,22 +101,31 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 		Thread.sleep(4000);
 		sno++;
-		driver.findElement(By.id("purposeInProtocolForm_ifr")).sendKeys(properties.getProperty("Objective"));
+		driver.switchTo().frame("purposeInProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Objective"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Purpose", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("productInformationProtocolForm_ifr")).sendKeys(properties.getProperty("Responsibilities"));
+		js.executeScript("window.scrollBy(0,250)");
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("productInformationProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Responsibilities"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Product Information", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("productDescProtocolForm_ifr")).sendKeys(properties.getProperty("StabilityPlan"));
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("productDescProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("StabilityPlan"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Product Description", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("selOfBatchesInProtocolForm_ifr")).sendKeys(properties.getProperty("Procedure"));
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame("selOfBatchesInProtocolForm_ifr");
+		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Procedure"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Selection Of Batches", sno, false);
 		Thread.sleep(2000);
 		sno++;
+		driver.switchTo().defaultContent();
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
 		WebElement element1 = driver.findElement(By.id("selAppFromUserInProtocolForm"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
@@ -217,8 +226,10 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 			sno++;
 			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			Date date = new Date();
-			String mfgDate= dateFormat.format(date);
-			driver.findElement(By.id("mfgDateInProtForm_"+i)).sendKeys(mfgDate);
+//			String mfgDate= dateFormat.format(date);
+//			driver.findElement(By.id("mfgDateInProtForm_"+i)).sendKeys(mfgDate);
+			driver.findElement(By.id("mfgDateInProtForm_"+i)).click();
+			driver.findElement(By.className("ui-datepicker-today")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Manufacturing Date", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -226,6 +237,7 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 			date = DateUtils.addYears(date, quantity);
 			String expDate = dateFormat.format(date);
 			driver.findElement(By.id("expDateInProtForm_"+i)).sendKeys(expDate);
+			driver.findElement(By.id("batchSizeInProtForm_"+i)).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Expiry Date", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -272,8 +284,9 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 			sno++;
 			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			Date date = new Date();
-			String mfgDate= dateFormat.format(date);
-			driver.findElement(By.id("manufactDateInProtFormAPI_"+j)).sendKeys(mfgDate);
+//			String mfgDate= dateFormat.format(date);
+			driver.findElement(By.id("manufactDateInProtFormAPI_"+j)).click();
+			driver.findElement(By.className("ui-datepicker-today")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Manufacturer Date", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -284,6 +297,7 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Expiry Date", sno, false);
 			Thread.sleep(2000);
 			sno++;
+			driver.findElement(By.id("manuFactByInProtFormAPI_"+j)).click();
 			driver.findElement(By.id("manuFactByInProtFormAPI_"+j)).sendKeys("Pharma");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Manufactured By", sno, false);
 			Thread.sleep(2000);
@@ -490,13 +504,11 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 				sno++;
 				Thread.sleep(2000);
 				
-				
-				
 				int noOfSchedulesIntervals = Integer.parseInt(properties.getProperty("NoOfSscheduleDetails"));
 				int rw=1;
 				for(int si=1; si<=noOfSchedulesIntervals; si++)
 				{
-					driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[3]")).click();
+					driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[3]")).click();
 					document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add", sno, false);				
 					sno++;
 					Thread.sleep(5000);
@@ -516,7 +528,7 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Schedule Interval type", sno, false);				
 				sno++;
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[18]/button")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[18]/button")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on view", sno, false);				
 				sno++;
 				Thread.sleep(2000);
