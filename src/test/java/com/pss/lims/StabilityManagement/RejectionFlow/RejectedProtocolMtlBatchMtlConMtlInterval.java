@@ -303,7 +303,7 @@ public class RejectedProtocolMtlBatchMtlConMtlInterval extends LoginDetails {
 			int rw=1;
 			for(int si=1; si<=noOfSchedulesIntervals; si++)
 			{
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[3]")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[3]")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add", sno, false);				
 				sno++;
 				Thread.sleep(5000);
@@ -323,7 +323,7 @@ public class RejectedProtocolMtlBatchMtlConMtlInterval extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Schedule Interval type", sno, false);				
 			sno++;
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[18]/button")).click();
+			driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr[" + rw + "]/td[18]/button")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on view", sno, false);				
 			sno++;
 			Thread.sleep(2000);

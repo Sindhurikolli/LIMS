@@ -13,7 +13,7 @@
 
             
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.CreateProtocolMltBatchMltConditionMltInterval" /> 
-			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectProtocol" />  
+			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectProtocol" />   
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectedProtocolMtlBatchMtlConMtlInterval" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ApproveProtocol" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ScheduleTestMulti" />
