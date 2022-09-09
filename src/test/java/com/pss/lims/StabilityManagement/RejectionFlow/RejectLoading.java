@@ -26,6 +26,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.Satbility.Login.LoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class RejectLoading extends LoginDetails {
@@ -97,6 +98,7 @@ public class RejectLoading extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Comments", sno, false);
 			Thread.sleep(3000);
 			sno++;
+			Helper.scrollElement(driver, By.id("rejectBtnInLoadingApprovalFormWindow"));
 			driver.findElement(By.id("rejectBtnInLoadingApprovalFormWindow")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Reject", sno, false);
 			Thread.sleep(3000);
