@@ -276,7 +276,7 @@ public class RejectedProtocol extends LoginDetails {
 			driver.findElement(By.id("addNumberOfRowsInSchStoCondJtable")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add Button", sno, false);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[3]/button")).click();
+			driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[3]/button")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -299,7 +299,7 @@ public class RejectedProtocol extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Schedule Interval Type", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
+			driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on view", sno, false);				
 			sno++;
 			Thread.sleep(2000);

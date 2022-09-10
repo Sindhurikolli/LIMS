@@ -436,7 +436,7 @@ public class CreateProtocol extends LoginDetails {
 				sno++;
 				Thread.sleep(2000);
 				
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[3]")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[3]")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Add", sno, false);				
 				sno++;
 				Thread.sleep(2000);
@@ -455,7 +455,7 @@ public class CreateProtocol extends LoginDetails {
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Schedule Interval type", sno, false);				
 				sno++;
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//*[@id=\"NewschIntervalStorageCondDetailTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
+				driver.findElement(By.xpath("//*[@id=\"newschIntervalStorageCondDetTableContainer\"]/div/table/tbody/tr/td[18]/button")).click();
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on view", sno, false);				
 				sno++;
 				Thread.sleep(2000);
