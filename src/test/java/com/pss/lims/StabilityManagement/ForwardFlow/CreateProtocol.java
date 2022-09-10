@@ -106,6 +106,7 @@ public class CreateProtocol extends LoginDetails {
 		Thread.sleep(2000);
 		sno++;
 		driver.switchTo().defaultContent();
+		js.executeScript("window.scrollBy(0,250)");
 		driver.switchTo().frame("productInformationProtocolForm_ifr");
 		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Responsibilities"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Product Information", sno, false);
@@ -118,11 +119,13 @@ public class CreateProtocol extends LoginDetails {
 		Thread.sleep(2000);
 		sno++;
 		driver.switchTo().defaultContent();
+		js.executeScript("window.scrollBy(0,250)");
 		driver.switchTo().frame("selOfBatchesInProtocolForm_ifr");
 		driver.findElement(By.xpath("/html/body")).sendKeys(properties.getProperty("Procedure"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Selection Of Batches", sno, false);
 		Thread.sleep(2000);
 		sno++;
+		driver.switchTo().defaultContent();
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
 		WebElement element1 = driver.findElement(By.id("selAppFromUserInProtocolForm"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
