@@ -11,9 +11,9 @@
 
 		<classes>
 
-			
+				
 			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.CreateProtocol"/>  
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveProtocol" />			 
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveProtocol" />		 
 			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTest" /> 
 			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTestApprove" />
 			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.Loading" /> 

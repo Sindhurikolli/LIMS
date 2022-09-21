@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.pss.lims.LoginDetails.LIMSLogin;
+import com.pss.lims.util.Helper;
 
 public class SMAssignRoles extends LIMSLogin {
 
@@ -28,13 +29,16 @@ public class SMAssignRoles extends LIMSLogin {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@id=\"loginform\"]/div[7]/input")).click();
 		Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(driver, 200);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='createRolePageInSample.do'")));
-		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='createRolePageInSample.do'"));
-		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
+//		WebDriverWait wait = new WebDriverWait(driver, 200);
+//		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='createRolePageInSample.do']")));
+//		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
+//		WebElement element1 = driver.findElement(By.cssSelector("a[href='createRolePageInSample.do']"));
+//		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
+//		Thread.sleep(2000);
+//		jse1.executeScript("arguments[0].click();", element1);
+		Helper.waitLoadRecords(driver, By.cssSelector("a[href='createRolePageInSample.do']"));
 		Thread.sleep(2000);
-		jse1.executeScript("arguments[0].click();", element1);
+		Helper.clickElement(driver, By.cssSelector("a[href='createRolePageInSample.do']"));
 		Thread.sleep(2000);
 		toCreateUsers();
 
