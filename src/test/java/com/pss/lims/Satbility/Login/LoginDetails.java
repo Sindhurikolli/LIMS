@@ -102,7 +102,7 @@ public class LoginDetails {
 			System.setProperty("webdriver.ie.driver", "IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			WebDriverWait wait = new WebDriverWait(driver, 120);
-			driver.get(properties.getProperty("URL"));
+			driver.get(properties.getProperty("LIMSLoginUrl"));
 			driver.manage().window().maximize();
 		} else if (DynamicBrowser.browserName.equalsIgnoreCase("Remote")) {
 			DesiredCapabilities dr = DesiredCapabilities.chrome();
@@ -113,14 +113,14 @@ public class LoginDetails {
 			driver = driver1;
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			WebDriverWait wait = new WebDriverWait(driver, 120);
-			driver.get(properties.getProperty("URL"));
+			driver.get(properties.getProperty("LIMSLoginUrl"));
 			driver.manage().window().maximize();
 		} else {
 			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			WebDriverWait wait = new WebDriverWait(driver, 120);
-			driver.get(properties.getProperty("URL"));
+			driver.get(properties.getProperty("LIMSLoginUrl"));
 			driver.manage().window().maximize();
 		}
 

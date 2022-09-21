@@ -27,6 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.SMLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class JobResultsForSMLite extends SMLoginDetails {
@@ -73,8 +74,7 @@ public class JobResultsForSMLite extends SMLoginDetails {
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Job Results", sno, false);
-		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#jobResultsJTable > div > div.jtable-busy-message[style='display: none;']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#jobResultsJTable > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(4000);
 		methodToapproveJobResults();
 		document.close();
@@ -92,6 +92,9 @@ public class JobResultsForSMLite extends SMLoginDetails {
 		String arNumber = properties.getProperty("AR_Number");
 		String testType = null;
 		String testTypeforEval = selectRecordForJobResults(count, isRecordSelected, arNumber, testType);
+		System.out.println("TestType-"+ testTypeforEval);
+		if(isRecordSelected)
+		{
 		if (testTypeforEval!=null && testTypeforEval.equalsIgnoreCase("Qualitative")) {
 			sno++;
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
@@ -197,6 +200,13 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			}
 			Thread.sleep(3000);
 		}
+		
+		}
+		else
+		{
+			System.out.println("Record Not Selected");
+			Assert.assertTrue(false);
+		}
 			sno++;
 			driver.findElement(By.className("username")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on User Name", sno, false);
@@ -242,14 +252,11 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			while (noOfRecordsChecked < totalNoOfRecords) {
 				if (totalNoOfRecords > 1) {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
-						String arNumberSequence = driver
-								.findElement(
-										By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[6]"))
-								.getText();// documentTypeName
+						Helper.scrollElement(driver, By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[6]"));
+						String arNumberSequence = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[6]")).getText();// documentTypeName
 						if (arNumber.contains(arNumberSequence)) {
-							driver.findElement(
-									By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]"))
-									.click();
+							Helper.clickElement(driver, By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]"));
+//							driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]")).click();
 							isRecordSelected = true;
 							testType = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[15]")).getText();
 							

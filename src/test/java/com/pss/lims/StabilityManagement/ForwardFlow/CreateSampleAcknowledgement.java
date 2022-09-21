@@ -90,10 +90,10 @@ public class CreateSampleAcknowledgement extends LoginDetails {
 		driver.findElement(By.id("acknowledgeSampleAckAction")).click();
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Sample Acknowledgment", sno, false);
 		sno++;
-		driver.findElement(By.id("searchBtnInSampleAck")).click();
-		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Search", sno, false);
-		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#sampleAckExistTableId > div > div.jtable-busy-message[style='display: none;']")));
+//		driver.findElement(By.id("searchBtnInSampleAck")).click();
+//		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Search", sno, false);
+//		wait.until(ExpectedConditions.presenceOfElementLocated(
+//				By.cssSelector("#sampleAckExistTableId > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(2000);
 		int count1 = 0;
 		boolean isRecordSelected1 = false;

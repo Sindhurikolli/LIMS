@@ -36,9 +36,10 @@ public class MultiUsersAssignRoleSMTest {
 		Thread.sleep(5000);
 		LIMSLogin login = new LIMSLogin();
 		login.setUp();
-		System.out.println("Role Assigned for - " +FirstName+ LastName);
+		
 		SMAssignRoles role = new SMAssignRoles();
 		role.SMAssignRoleMethod();
+		System.out.println("Role Assigned for - " +FirstName+ LastName);
 		LIMSLogin.tearDown();
 
 	}
