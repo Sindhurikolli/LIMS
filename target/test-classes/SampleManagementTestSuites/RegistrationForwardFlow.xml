@@ -9,50 +9,73 @@
 			
 </listeners>
 
-	<test name="RegistrationTestSuites">
+	<test name="RegistrationTestSuites1">
 
 		<classes>
 
-			 <class name = "com.pss.lims.sm.RegistrationForwardFlow.PackingType" /> 
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.PackingTypeApproval" /> 
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.UOM" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.ApproveUOM" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.StroageCondition" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.ApproveStorageCondition" /> 
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.StorageLocation" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.StorageLocationApproval" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.HandlingSymbol" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.HandlingSymbolApproval" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.CategoryRegistration" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.ApproveCategory" />
+			<!--  <class name = "com.pss.lims.Registration.RegistrationForwardFlow.PackingType" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.PackingTypeApproval" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.UOM" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ApproveUOM" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.StroageCondition" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ApproveStorageCondition" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.StorageLocation" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.StorageLocationApproval" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.HandlingSymbol" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.HandlingSymbolApproval" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.CategoryRegistration" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ApproveCategory" />  -->
 			
 	</classes>
 	
   </test>
   
-<test name = "RegistrationForwardFlow">
+<test name = "RegistrationTestSuites2">
 		
 		<classes>
 			
-			 <class name = "com.pss.lims.sm.RegistrationForwardFlow.TestCode" /> 
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.TestCodeApproval" />  
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.Grade" /> 
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.ApproveGrade" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.GroupType" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.GroupTypeApproval" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.GroupRegistration" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.GroupRegistrationApproval" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.Customer" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.CustomerApproval" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.Supplier" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.SupplierApproval"/>
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.Manufacturer" />
-			<class name = "com.pss.lims.sm.RegistrationForwardFlow.ManufacturerApprove" />
-			<class name="com.pss.lims.sm.RegistrationForwardFlow.OosCheckList"/>
-			<class name="com.pss.lims.sm.RegistrationForwardFlow.OosCheckListApproval"/>
+			<!--  <class name = "com.pss.lims.Registration.RegistrationForwardFlow.TestCode" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.TestCodeApproval" />  -->
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Grade" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ApproveGrade" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.GroupType" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.GroupTypeApproval" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.GroupRegistration" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.GroupRegistrationApproval" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Customer" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.CustomerApproval" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Supplier" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.SupplierApproval"/>
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Manufacturer" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ManufacturerApprove" />
+			<class name="com.pss.lims.Registration.RegistrationForwardFlow.OosCheckList"/>
+			<class name="com.pss.lims.Registration.RegistrationForwardFlow.OosCheckListApproval"/>
      
 		</classes>
 		
+		
+		
+		
 </test>
+
+	<test name="RegistrationTestSuites3">
+
+		<classes>
+
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Product" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.ProductApproval" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.Specification" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.SpecificationApproval" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.QualitativeTestReg" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.TestApproval" /> 
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.TestPlanner" />
+			<class name = "com.pss.lims.Registration.RegistrationForwardFlow.TestPlannerApproval" />
+			
+			
+			
+	</classes>
+	
+  </test>
+			
 	
 </suite>
