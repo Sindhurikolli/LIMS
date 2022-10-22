@@ -89,12 +89,13 @@ public class JobResultsForSMLite extends SMLoginDetails {
 
 		int count = 0;
 		boolean isRecordSelected = false;
-		String arNumber = properties.getProperty("AR_Number");
+//		String arNumber = properties.getProperty("AR_Number");
+		String arNumber = null;
 		String testType = null;
 		String testTypeforEval = selectRecordForJobResults(count, isRecordSelected, arNumber, testType);
 		System.out.println("TestType-"+ testTypeforEval);
-		if(isRecordSelected)
-		{
+//		if(isRecordSelected)
+//		{
 		if (testTypeforEval!=null && testTypeforEval.equalsIgnoreCase("Qualitative")) {
 			sno++;
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
@@ -201,7 +202,7 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			Thread.sleep(3000);
 		}
 		
-		}
+//		}
 		else
 		{
 			System.out.println("Record Not Selected");
