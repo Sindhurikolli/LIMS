@@ -506,6 +506,9 @@ public class CreateProtocol extends LoginDetails {
 				PropertiesConfiguration properties = new PropertiesConfiguration("src\\test\\java\\LIMSUIProperties\\StabilityManagement.properties");
 				properties.setProperty("Protocol_Number", Protocol);				
 				properties.save();
+				PropertiesConfiguration propertiessample = new PropertiesConfiguration("src\\test\\java\\LIMSUIProperties\\SampleManagement.properties");
+				propertiessample.setProperty("Protocol_Number", Protocol);				
+				propertiessample.save();
 				
 				sno++;
 					document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on OK button", sno,
