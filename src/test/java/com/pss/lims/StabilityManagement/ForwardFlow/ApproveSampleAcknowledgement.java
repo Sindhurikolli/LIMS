@@ -181,7 +181,7 @@ public class ApproveSampleAcknowledgement extends LoginDetails {
 								.getText();// documentTypeName
 						if (name.equalsIgnoreCase(DevNumberSequence)) {
 							driver.findElement(By.xpath("//*[@id=\"sampleAckApprovalTable\"]/div/table/tbody/tr[ " + i
-									+ " ]/td[20]/button")).click();
+									+ " ]/td[24]/button")).click();
 							isRecordSelected = true;
 							break;
 						}
@@ -195,7 +195,7 @@ public class ApproveSampleAcknowledgement extends LoginDetails {
 							.getText();
 					if (name.equalsIgnoreCase(DevNumberSequence)) {
 						driver.findElement(
-								By.xpath("//*[@id=\"sampleAckApprovalTable\"]/div/table/tbody/tr/td[20]/button"))
+								By.xpath("//*[@id=\"sampleAckApprovalTable\"]/div/table/tbody/tr/td[24]/button"))
 								.click();
 						isRecordSelected = true;
 						break;

@@ -107,8 +107,7 @@ public class CreateSampleAcknowledgement extends LoginDetails {
 //			Thread.sleep(3000);
 			sno++;
 			JavascriptExecutor jse12 = (JavascriptExecutor) driver;
-			WebElement element12 = driver
-					.findElement(By.cssSelector("#TotalContent > div.actions.clearfix > ul > li:nth-child(2) > a"));
+			WebElement element12 = driver.findElement(By.cssSelector("a[href='#next']"));
 			jse12.executeScript("arguments[0].click();", element12);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);
@@ -117,12 +116,12 @@ public class CreateSampleAcknowledgement extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			Select uom = new Select(driver.findElement(By.id("uomInSampleAck")));
-			Thread.sleep(2000);
-			uom.selectByIndex(1);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
-			Thread.sleep(2000);
-			sno++;
+//			Select uom = new Select(driver.findElement(By.id("uomInSampleAck")));
+//			Thread.sleep(2000);
+//			uom.selectByIndex(1);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
 			driver.findElement(By.id("usedForInSampleAck")).sendKeys("Sampling");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Used For", sno, false);
 			Thread.sleep(2000);
@@ -169,7 +168,7 @@ public class CreateSampleAcknowledgement extends LoginDetails {
 			Thread.sleep(3000);
 			sno++;
 			JavascriptExecutor jse5110 = (JavascriptExecutor) driver;
-			WebElement element5110 = driver.findElement(By.xpath("//*[@id=\"TotalContent\"]/div[3]/ul/li[3]/a"));
+			WebElement element5110 = driver.findElement(By.cssSelector("a[href='#finish']"));
 			jse5110.executeScript("arguments[0].click();", element5110);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Finish", sno, false);
 			Thread.sleep(3000);
