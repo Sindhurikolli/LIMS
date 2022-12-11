@@ -86,7 +86,12 @@ public class JobResultsForSMLite extends SMLoginDetails {
 	}
 
 	private void methodToapproveJobResults() throws Exception {
-
+		
+//		driver.findElement(By.id("ProtocolNumSearchInJobResults")).sendKeys(properties.getProperty("Protocol_Number"));
+//		Thread.sleep(1000);
+//		driver.findElement(By.id("searchBtnInJobResults")).click();
+//		Thread.sleep(4000);
+//		Helper.waitLoadRecords(driver, By.cssSelector("#jobResultsJTable > div > div.jtable-busy-message[style='display: none;']"));
 		int count = 0;
 		boolean isRecordSelected = false;
 //		String arNumber = properties.getProperty("AR_Number");
@@ -259,7 +264,7 @@ public class JobResultsForSMLite extends SMLoginDetails {
 							Helper.clickElement(driver, By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]"));
 //							driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]")).click();
 							isRecordSelected = true;
-							testType = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[15]")).getText();
+							testType = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[ " + i + " ]/td[23]")).getText();
 							
 							break;
 						}
@@ -273,7 +278,7 @@ public class JobResultsForSMLite extends SMLoginDetails {
 					if (arNumber.contains(arNumberSequence)) {
 						driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[6]")).click();
 						isRecordSelected = true;
-						testType = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[15]")).getText();
+						testType = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[23]")).getText();
 						
 						break;
 					}
