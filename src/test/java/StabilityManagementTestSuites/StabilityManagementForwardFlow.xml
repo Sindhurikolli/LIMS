@@ -13,13 +13,13 @@
 
 				
 			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.CreateProtocol"/>   
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveProtocol" />		 
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTest" /> 
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTestApprove" />
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.Loading" /> 
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveLoading" /
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.CreateSampleAcknowledgement" />
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveSampleAcknowledgement" />
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveProtocol"/>		 
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTest"/> 
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ScheduleTestApprove"/>
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.Loading"/> 
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveLoading"/>
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.CreateSampleAcknowledgement"/>
+			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveSampleAcknowledgement"/>
 
 		</classes>
 		
