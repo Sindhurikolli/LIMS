@@ -183,7 +183,7 @@ public class ApproveProtocol extends LoginDetails {
 								.getText();// documentTypeName
 						if (name.equalsIgnoreCase(DevNumberSequence)) {
 							driver.findElement(By.xpath("//*[@id=\"protocolStabReqApprovalTable\"]/div/table/tbody/tr[ "
-									+ i + " ]/td[18]/button")).click();
+									+ i + " ]/td[20]/button")).click();
 							isRecordSelected = true;
 							break;
 						}
@@ -197,7 +197,7 @@ public class ApproveProtocol extends LoginDetails {
 							.getText();
 					if (name.equalsIgnoreCase(DevNumberSequence)) {
 						driver.findElement(
-								By.xpath("//*[@id=\"protocolStabReqApprovalTable\"]/div/table/tbody/tr/td[18]/button"))
+								By.xpath("//*[@id=\"protocolStabReqApprovalTable\"]/div/table/tbody/tr/td[20]/button"))
 								.click();
 						isRecordSelected = true;
 						break;
