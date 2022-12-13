@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -89,8 +90,24 @@ public class JobResultsForSMLite extends SMLoginDetails {
 		
 //		driver.findElement(By.id("ProtocolNumSearchInJobResults")).sendKeys(properties.getProperty("Protocol_Number"));
 //		Thread.sleep(1000);
+		driver.findElement(By.id("SelectBtnProductInJobResults")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("locTreeInLimsSmReg_2_span")).click();
+		Helper.waitLoadRecords(driver, By.cssSelector("#productsTableContainer > div > div.jtable-busy-message[style='display: none;']"));
+		String ProductCode = properties.getProperty("Product_code");
+		boolean isRecordSelectedProduct = false;
+		int countProd = 0;
+		if(Helper.selectingProductWithProductCode(driver, ProductCode, isRecordSelectedProduct, countProd))
+		{
+			Select specName = new Select(driver.findElement(By.id("SpecificationSearchInJobResults")));
+			specName.selectByVisibleText(properties.getProperty("Specification_Name"));
+		}
+		else
+		{
 	Select testTypeSearch = new Select(driver.findElement(By.id("TestTypeSearchInJobResults")));
 	testTypeSearch.selectByVisibleText(properties.getProperty("TestTypeSearch"));
+		}
+	
 		driver.findElement(By.id("searchBtnInJobResults")).click();
 		Thread.sleep(4000);
 		Helper.waitLoadRecords(driver, By.cssSelector("#jobResultsJTable > div > div.jtable-busy-message[style='display: none;']"));

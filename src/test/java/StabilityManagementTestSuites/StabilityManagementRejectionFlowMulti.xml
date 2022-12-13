@@ -17,7 +17,7 @@
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectedProtocolMtlBatchMtlConMtlInterval" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ApproveProtocol" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ScheduleTestMulti" />
-			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectScheduleTest" />
+			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectScheduleTest" /> 
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectedScheduleTestMulti" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ScheduleTestApprove" />
 			
@@ -31,7 +31,7 @@
 	<classes>
 	
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.LoadingMulti" />  
-			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectLoading" />
+			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectLoading" /> 
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.RejectedLoadingMulti" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.ApproveLoading" />
 			<class name = "com.pss.lims.StabilityManagement.RejectionFlow.CreateSampleAcknowledgement" /> 
