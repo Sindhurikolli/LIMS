@@ -108,22 +108,22 @@ public class RejectedLoading extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[7]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
 					.clear();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[7]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
 					.sendKeys("4");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
 					.clear();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
 					.sendKeys("1");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
 			Thread.sleep(2000);
@@ -135,23 +135,23 @@ public class RejectedLoading extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[10]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
 					.clear();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[10]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
 					.sendKeys("2");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
 					false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
 					.clear();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
+			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
 					.sendKeys("3");
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
 					false);

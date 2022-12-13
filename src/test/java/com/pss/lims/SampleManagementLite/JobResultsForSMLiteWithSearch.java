@@ -30,7 +30,7 @@ import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
-public class JobResultsForSMLite extends SMLoginDetails {
+public class JobResultsForSMLiteWithSearch extends SMLoginDetails {
 
 	@Test
 	public void JobResultsForSMLiteVersion() throws Exception {
@@ -87,10 +87,8 @@ public class JobResultsForSMLite extends SMLoginDetails {
 
 	private void methodToapproveJobResults() throws Exception {
 		
-//		driver.findElement(By.id("ProtocolNumSearchInJobResults")).sendKeys(properties.getProperty("Protocol_Number"));
-//		Thread.sleep(1000);
-	Select testTypeSearch = new Select(driver.findElement(By.id("TestTypeSearchInJobResults")));
-	testTypeSearch.selectByVisibleText(properties.getProperty("TestTypeSearch"));
+		driver.findElement(By.id("ProtocolNumSearchInJobResults")).sendKeys(properties.getProperty("Protocol_Number"));
+		Thread.sleep(1000);
 		driver.findElement(By.id("searchBtnInJobResults")).click();
 		Thread.sleep(4000);
 		Helper.waitLoadRecords(driver, By.cssSelector("#jobResultsJTable > div > div.jtable-busy-message[style='display: none;']"));
@@ -108,7 +106,6 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			Helper.scrollElement(driver, By.id("evaluateBtnInSampleResult"));
 			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Evaluate", sno, false);
 			Thread.sleep(3000);
@@ -158,7 +155,6 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			Helper.scrollElement(driver, By.id("evaluateBtnInSampleResult"));
 			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Evaluate", sno, false);
 			Thread.sleep(3000);

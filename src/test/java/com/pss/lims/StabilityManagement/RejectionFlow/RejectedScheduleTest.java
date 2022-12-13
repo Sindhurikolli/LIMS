@@ -27,6 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.Satbility.Login.LoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class RejectedScheduleTest extends LoginDetails {
@@ -71,6 +72,8 @@ public class RejectedScheduleTest extends LoginDetails {
 		wiat.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='createScheduleTestForm.do'")));
 		driver.findElement(By.cssSelector("a[href='createScheduleTestForm.do'")).click();
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Schedule Test", sno, false);
+		Helper.waitLoadRecords(driver, By.id("rejectedScheduleTestAction"));
+		driver.findElement(By.id("rejectedScheduleTestAction")).click();
 		wiat.until(ExpectedConditions.presenceOfElementLocated(
 				By.cssSelector("#schTestSelRejjTable > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(4000);

@@ -101,8 +101,7 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 			Thread.sleep(3000);
 			sno++;
 			JavascriptExecutor jse12 = (JavascriptExecutor) driver;
-			WebElement element12 = driver
-					.findElement(By.cssSelector("#TotalContent > div.actions.clearfix > ul > li:nth-child(2) > a"));
+			WebElement element12 = driver.findElement(By.cssSelector("a[href='#next']"));
 			jse12.executeScript("arguments[0].click();", element12);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);		
@@ -138,7 +137,7 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 			}
 			
 			JavascriptExecutor jse5110 = (JavascriptExecutor) driver;
-			WebElement element5110 = driver.findElement(By.xpath("//*[@id=\"TotalContent\"]/div[3]/ul/li[3]/a"));
+			WebElement element5110 = driver.findElement(By.cssSelector("a[href='#finish']"));
 			jse5110.executeScript("arguments[0].click();", element5110);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Finish", sno, false);
 			Thread.sleep(3000);
@@ -182,26 +181,26 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 		WebElement table = driver.findElement(By.id("sampleAckRejectedTableId"));
 		WebElement tableBody = table.findElement(By.tagName("tbody"));
 		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
-		int totalNoOfRecords = 0;
+		int totalNoOfRecords = perPageNoOfRecordsPresent;
 		int noOfRecordsChecked = 0;
-		if (perPageNoOfRecordsPresent > 0) {
-			String a = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/div[4]/div[2]/span"))
-					.getText();// For
-			// Ex:
-			// Showing
-			// 1-1
-			// of
-			// 1
-//			System.out.println("hi:" + a);
-			String[] parts = a.split(" of ");
-//			System.out.println("parts:" + parts.toString());
-			try {
-				totalNoOfRecords = Integer.parseInt(parts[1].trim());
-				System.out.println(totalNoOfRecords);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
+//		if (perPageNoOfRecordsPresent > 0) {
+//			String a = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/div[4]/div[2]/span"))
+//					.getText();// For
+//			// Ex:
+//			// Showing
+//			// 1-1
+//			// of
+//			// 1
+////			System.out.println("hi:" + a);
+//			String[] parts = a.split(" of ");
+////			System.out.println("parts:" + parts.toString());
+//			try {
+//				totalNoOfRecords = Integer.parseInt(parts[1].trim());
+//				System.out.println(totalNoOfRecords);
+//			} catch (Exception e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((name == null) || ("".equalsIgnoreCase(name)))) {
 				name = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/table/tbody/tr[1]/td[6]"))
