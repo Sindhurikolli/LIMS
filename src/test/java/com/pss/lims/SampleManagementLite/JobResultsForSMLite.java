@@ -99,6 +99,8 @@ public class JobResultsForSMLite extends SMLoginDetails {
 		int countProd = 0;
 		if(Helper.selectingProductWithProductCode(driver, ProductCode, isRecordSelectedProduct, countProd))
 		{
+			driver.findElement(By.id("productSelBtnInProdSelWin")).click();
+			Thread.sleep(2000);
 			Select specName = new Select(driver.findElement(By.id("SpecificationSearchInJobResults")));
 			specName.selectByVisibleText(properties.getProperty("Specification_Name"));
 		}
