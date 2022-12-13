@@ -751,5 +751,81 @@ public class Helper {
 
 		return isRecordSelectedForSelectingMultiUsers;
 	}
+	
+	public static boolean selectingProductWithProductCode(WebDriver driver, String productCode,
+			boolean isRecordSelected, int count) throws InterruptedException {
+		WebElement table = driver.findElement(By.id("productsTableContainer"));// Single Selection User Table
+		WebElement tableBody = table.findElement(By.tagName("tbody"));
+		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
+		int totalNoOfRecords = 0;
+		int noOfRecordsChecked = 0;
+		if (perPageNoOfRecordsPresent > 0) {
+//            String a = driver.findElement(By.className("jtable-page-info")).getText();// For Ex: Showing 1-1 of 1
+			String a = driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/div[4]/div[2]/span")).getText()
+					.toString();// For Ex: Showing 1-1 of 1
+			String[] parts = a.split(" of ");
+			totalNoOfRecords = Integer.parseInt(parts[1].trim());
+		}
+		if (perPageNoOfRecordsPresent > 0 && count == 0) {
+			if ((totalNoOfRecords > 1)
+					&& ((productCode == null) || ("".equalsIgnoreCase(productCode)))) {
+				productCode = driver
+						.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[1]/td[2]"))
+						.getText();
+			} else if (productCode == null || ("".equalsIgnoreCase(productCode))) {
+				productCode = driver
+						.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]")).getText();
+			}
+			++count;
+		}
+
+		if (perPageNoOfRecordsPresent > 0) {
+			while (noOfRecordsChecked < totalNoOfRecords) {
+				if (totalNoOfRecords > 1) {
+					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
+						String selectingUser = driver
+								.findElement(By
+										.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[" + i + "]/td[2]"))
+								.getText();
+						if (productCode.equalsIgnoreCase(selectingUser)) {
+//                            driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[" + i + "]/td[1]")).click();
+							JavascriptExecutor jse4 = (JavascriptExecutor) driver;
+							WebElement element4 = driver.findElement(
+									By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[" + i + "]/td[2]"));
+							jse4.executeScript("arguments[0].click();", element4);
+							isRecordSelected = true;
+							break;
+						}
+						if (isRecordSelected) {
+							break;
+						}
+					}
+				} else {
+					String selectingUser = driver
+							.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
+							.getText();
+					if (productCode.equalsIgnoreCase(selectingUser)) {
+						driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
+								.click();
+						isRecordSelected = true;
+						break;
+					}
+				}
+				noOfRecordsChecked += perPageNoOfRecordsPresent;
+				if ((!isRecordSelected) && (noOfRecordsChecked < totalNoOfRecords)) {
+					JavascriptExecutor jse112 = (JavascriptExecutor) driver;
+					WebElement element112 = driver.findElement(By.cssSelector(
+							"#productsTableContainer > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"));
+					jse112.executeScript("arguments[0].click();", element112);
+					// next page in single approval
+					Thread.sleep(7000);
+					table = driver.findElement(By.id("productsTableContainer"));// single approval table
+					tableBody = table.findElement(By.tagName("tbody"));
+					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
+				}
+			}
+		}
+		return isRecordSelected;
+	}
 
 }
