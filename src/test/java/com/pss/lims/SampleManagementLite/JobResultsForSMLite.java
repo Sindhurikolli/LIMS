@@ -94,7 +94,8 @@ public class JobResultsForSMLite extends SMLoginDetails {
 		Thread.sleep(2000);
 		driver.findElement(By.id("locTreeInLimsSmReg_2_span")).click();
 		Helper.waitLoadRecords(driver, By.cssSelector("#productsTableContainer > div > div.jtable-busy-message[style='display: none;']"));
-		String ProductCode = properties.getProperty("Product_code");
+		String ProductCode = properties.getProperty("Product_Code");
+		System.out.println("ProductCode - "+ProductCode);
 		boolean isRecordSelectedProduct = false;
 		int countProd = 0;
 		if(Helper.selectingProductWithProductCode(driver, ProductCode, isRecordSelectedProduct, countProd))
