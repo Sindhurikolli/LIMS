@@ -521,8 +521,11 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 					sno++;
 					Thread.sleep(5000);
 					Helper.waitLoadRecords(driver, By.cssSelector("#batchAndSCFieldsDetailsJtableInSchStrCondFormDialog > div > div.jtable-busy-message[style='display: none;']"));
-				driver.findElement(By.xpath("//*[@id=\"batchAndSCFieldsDetailsJtableInSchStrCondFormDialog\"]/div/table/tbody/tr[" + rw + "]")).click();
-				driver.findElement(By.xpath("//*[@id=\"batchAndSCFieldsDetailsSchStorageCondDialog\"]/div[2]/div/button")).click();
+//				driver.findElement(By.xpath("//*[@id=\"batchAndSCFieldsDetailsJtableInSchStrCondFormDialog\"]/div/table/tbody/tr[" + rw + "]")).click();
+//				driver.findElement(By.xpath("//*[@id=\"batchAndSCFieldsDetailsSchStorageCondDialog\"]/div[2]/div/button")).click();
+					Helper.clickElement(driver, By.xpath("//*[@id=\"batchAndSCFieldsDetailsJtableInSchStrCondFormDialog\"]/div/table/tbody/tr[" + rw + "]"));
+					Thread.sleep(2000);
+					Helper.clickElement(driver, By.xpath("//*[@id=\"batchAndSCFieldsDetailsSchStorageCondDialog\"]/div[2]/div/button"));
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "click on record and select", sno, false);				
 				sno++;
 				Thread.sleep(2000);
