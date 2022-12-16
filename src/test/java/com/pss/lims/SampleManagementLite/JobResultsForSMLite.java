@@ -3,6 +3,8 @@ package com.pss.lims.SampleManagementLite;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -104,6 +106,24 @@ public class JobResultsForSMLite extends SMLoginDetails {
 			Thread.sleep(2000);
 			Select specName = new Select(driver.findElement(By.id("SpecificationSearchInJobResults")));
 			specName.selectByVisibleText(properties.getProperty("Specification_Name"));
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			Date date = new Date();
+			Thread.sleep(3000);
+			JavascriptExecutor jse1 = (JavascriptExecutor) driver;
+			WebElement element1 = driver.findElement(By.id("FromDateSearchInJobResults"));
+			jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
+			element1.sendKeys(sdf.format(date));
+			Thread.sleep(3000);
+			
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
+			Date date1 = new Date();
+			Thread.sleep(3000);
+			JavascriptExecutor jse2 = (JavascriptExecutor) driver;
+			WebElement element2 = driver.findElement(By.id("ToDateSearchInJobResults"));
+			jse2.executeScript("arguments[0].scrollIntoView(true);", element2);
+			element2.sendKeys(sdf2.format(date1));
+	
 		}
 		else
 		{
