@@ -25,6 +25,18 @@
 		
 	</test>
 	
+	<test name = "SampleManagementLite">
+
+		<classes>
+
+				
+			<class name = "com.pss.lims.SampleManagementLite.MultiJobResultsForSMLite"/>  
+			
+
+		</classes>
+		
+	</test>
+	
 	<!-- <test name = "InitialRegistrations">
 
 		<classes>
