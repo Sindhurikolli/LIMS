@@ -29,28 +29,12 @@
 
 		<classes>
 
-				
 			<class name = "com.pss.lims.SampleManagementLite.MultiJobResultsForSMLite"/>  
-			
 
 		</classes>
 		
 	</test>
 	
-	<!-- <test name = "InitialRegistrations">
-
-		<classes>
-			
-		<class name = "com.pss.lims.StabilityManagement.ForwardFlow.AnalysisTolerance" />
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ProtocolSequence" />
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.SampleTypeMap"/>
-		<class name = "com.pss.lims.StabilityManagement.ForwardFlow.StorageCondition" />
-		<class name = "com.pss.lims.StabilityManagement.ForwardFlow.MasterChamber" />
-			<class name = "com.pss.lims.StabilityManagement.ForwardFlow.ApproveMasterChamber" />
 	
-			
-	</classes>
-		
-	</test> -->
 	
 </suite>

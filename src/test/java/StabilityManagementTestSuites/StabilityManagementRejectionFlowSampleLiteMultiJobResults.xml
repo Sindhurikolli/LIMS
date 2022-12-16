@@ -46,10 +46,8 @@
 
 		<classes>
 
-				
 			<class name = "com.pss.lims.SampleManagementLite.MultiJobResultsForSMLite"/>  
-			
-
+	
 		</classes>
 		
 	</test>
