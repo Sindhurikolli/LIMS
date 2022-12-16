@@ -106,7 +106,8 @@ public class JobResultsForSMLiteWithSearch extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
+			Helper.clickElement(driver, By.id("evaluateBtnInSampleResult"));
+//			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Evaluate", sno, false);
 			Thread.sleep(3000);
 			sno++;
@@ -155,7 +156,8 @@ public class JobResultsForSMLiteWithSearch extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
+			Helper.clickElement(driver, By.id("evaluateBtnInSampleResult"));
+//			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Evaluate", sno, false);
 			Thread.sleep(3000);
 			sno++;
