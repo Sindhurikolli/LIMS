@@ -90,7 +90,7 @@ public class TestApproval extends RegistrationLoginDetails {
 		Thread.sleep(3000);
 		int count = 0;
 		boolean isRecordSelected = false;
-		String storageCondition = properties.getProperty("Test_Name_Qualitative");
+		String storageCondition = properties.getProperty("Product_name");
 		isRecordSelected = selectRecordForStorageLocation(count, isRecordSelected, storageCondition);
 		if (isRecordSelected) {
 			sno++;
@@ -182,11 +182,11 @@ public class TestApproval extends RegistrationLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String DevNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"testTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[5]"))
+										"//*[@id=\"testTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
 								.getText();// documentTypeName
 						if (storageCondition.contains(DevNumberSequence)) {
 							driver.findElement(
-									By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[5]"))
+									By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -197,10 +197,10 @@ public class TestApproval extends RegistrationLoginDetails {
 					}
 				} else {
 					String DevNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[5]"))
+							.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[3]"))
 							.getText();
 					if (storageCondition.contains(DevNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[5]"))
+						driver.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[3]"))
 								.click();
 						isRecordSelected = true;
 						break;

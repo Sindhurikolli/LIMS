@@ -131,7 +131,7 @@ public class QuantativeTestReg extends RegistrationLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Specification", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("testNameInSmTest")).sendKeys(properties.getProperty("Test_Name_Quantitative"));
+			driver.findElement(By.id("testNameInSmTest")).sendKeys(properties.getProperty("Test_Name"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Test Name", sno, false);
 			Thread.sleep(2000);
 			sno++;
