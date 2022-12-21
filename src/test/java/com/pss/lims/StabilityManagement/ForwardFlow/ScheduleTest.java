@@ -27,6 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.Satbility.Login.LoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class ScheduleTest extends LoginDetails {
@@ -132,6 +133,7 @@ public class ScheduleTest extends LoginDetails {
 //			Thread.sleep(3000);
 //			sno++;
 			driver.findElement(By.id("totalSyrengesDatatext11_1")).sendKeys(properties.getProperty("NumberofSyringesrequiredatEachPoint"));
+			driver.findElement(By.id("totalSyrengesDatatext12_1")).sendKeys(properties.getProperty("TotalnoofSyringes"));
 			Select lifeCycle = new Select(driver.findElement(By.id("lifeCycleInScheduleTestSel")));
 			Thread.sleep(2000);
 			lifeCycle.selectByVisibleText(properties.getProperty("Lifecycle"));

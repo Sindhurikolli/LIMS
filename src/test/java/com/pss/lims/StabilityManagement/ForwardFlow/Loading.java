@@ -106,41 +106,41 @@ public class Loading extends LoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[8]/input"))
-					.sendKeys("2");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[9]/input"))
-					.sendKeys("3");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
+			//driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[8]/input"))
+				//	.sendKeys("2");
+			//document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
+			//Thread.sleep(2000);
+			//sno++;
+			//driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[9]/input"))
+				//	.sendKeys("3");
+			//document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
+			//Thread.sleep(2000);
+			//sno++;
 			Select uom1 = new Select(
-					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownInStabReqLoading')]")));
+					driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[13]/select")));
 			Thread.sleep(2000);
 			uom1.selectByIndex(1);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
 			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[11]/input"))
-					.sendKeys("3");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[12]/input"))
-					.sendKeys("2");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			Select uom11 = new Select(
-					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownCountInStabReqLoadin')]")));
-			Thread.sleep(2000);
-			uom11.selectByIndex(1);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
-			Thread.sleep(2000);
+			//sno++;
+			//driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[11]/input"))
+			//		.sendKeys("3");
+			//document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
+			//		false);
+			//Thread.sleep(2000);
+			//sno++;
+			//driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[12]/input"))
+			//		.sendKeys("2");
+			//document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
+				//	false);
+			//Thread.sleep(2000);
+			//sno++;
+			//Select uom11 = new Select(
+			//		driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownCountInStabReqLoadin')]")));
+			//Thread.sleep(2000);
+			//uom11.selectByIndex(1);
+			//document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
+			//Thread.sleep(2000);
 			sno++;
 			WebElement element = driver
 					.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[15]/input"));
@@ -165,7 +165,7 @@ public class Loading extends LoginDetails {
 			Thread.sleep(2000);
 			String MasterName = properties.getProperty("MasterChamber");
 			String MasterID = properties.getProperty("MasterChamberID");
-			String MasterChamber =MasterName+" | "+MasterID;
+			String MasterChamber =MasterName+"| "+MasterID;
 			System.out.println(MasterChamber);
 			chamber.selectByVisibleText(MasterChamber);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Chamber", sno, false);

@@ -100,7 +100,7 @@ public class SampleAcknowledgementARNumbersforaProtocol extends LoginDetails {
 		boolean isRecordSelected1 = false;
 		String name1 = properties.getProperty("Protocol_Number");
 		boolean pc = false;
-		pc= driver.findElement(By.xpath("//*[@id=\"sampleAckExistTableId\"]/div/table/tbody/tr[25]/td[6]")).getText().equalsIgnoreCase(name1);
+		pc= driver.findElement(By.xpath("//*[@id=\"sampleAckExistTableId\"]/div/table/tbody/tr[1]/td[6]")).getText().equalsIgnoreCase(name1);
 		
 //		 List<WebElement> m = driver.findElements(By.xpath("//h2[@class='store-name']"));
 		

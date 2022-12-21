@@ -72,6 +72,7 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 				ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='sampleAcknowledgementFormInSM.do']")));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Sample Acknowledgement", sno,
 				false);
+		
 		driver.findElement(By.cssSelector("a[href='sampleAcknowledgementFormInSM.do']")).click();
 		
 		wiat.until(ExpectedConditions
@@ -178,6 +179,15 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 
 	private boolean selectRejectedRecord(int count, boolean isRecordSelected, String name) throws Exception {
 		// TODO Auto-generated method stub
+		
+		WebDriverWait wait = new WebDriverWait(driver, 240);
+		sno++;
+		driver.findElement(By.id("rejectedSampleAckAction")).click();
+		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Reverted Sample Acknowledgments by Approver", sno, false);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
+				"#sampleAckRejectedTableId > div > div.jtable-busy-message[style='display: none;']")));
+		Thread.sleep(2000);
+		
 		WebElement table = driver.findElement(By.id("sampleAckRejectedTableId"));
 		WebElement tableBody = table.findElement(By.tagName("tbody"));
 		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
@@ -203,7 +213,7 @@ public class RejectedSampleAcknowledgement extends LoginDetails {
 //		}
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((name == null) || ("".equalsIgnoreCase(name)))) {
-				name = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/table/tbody/tr[1]/td[6]"))
+				name = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/table/tbody/tr/td[6]"))
 						.getText();// documentType
 			} else if ((name == null) || ("".equalsIgnoreCase(name))) {
 				name = driver.findElement(By.xpath("//*[@id=\"sampleAckRejectedTableId\"]/div/table/tbody/tr/td[6]"))
