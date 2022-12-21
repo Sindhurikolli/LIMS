@@ -377,34 +377,26 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(6000);
 			sno++;
-			JavascriptExecutor jse3 = (JavascriptExecutor) driver;
-			WebElement element3 = driver.findElement(By.id("selectStorageConditions"));
-			jse3.executeScript("arguments[0].click();", element3);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "click on Select", sno, false);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
-					"#multiSelectStorageConditionsTableContainer > div > div.jtable-busy-message[style='display: none;']")));
-			Thread.sleep(5000);
+			
 			int noOfStorageConditions = Integer.parseInt(properties.getProperty("NoOfStorageConditions"));
 			int count2 = 0;
 			boolean isRecordSelected2 = false;
 			for (int sc=1; sc<=noOfStorageConditions;sc++)
 			{
-
+				JavascriptExecutor jse3 = (JavascriptExecutor) driver;
+				WebElement element3 = driver.findElement(By.id("selectStorageConditions"));
+				jse3.executeScript("arguments[0].click();", element3);
+				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "click on Select", sno, false);
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#multiSelectStorageConditionsTableContainer > div > div.jtable-busy-message[style='display: none;']")));
+				Thread.sleep(5000);
+				Select firstPage = new Select(driver.findElement(By.xpath("//*[@id=\"multiSelectStorageConditionsTableContainer\"]/div/div[4]/div[1]/span[2]/select")));
+				firstPage.selectByVisibleText("1");
+				Thread.sleep(5000);
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#multiSelectStorageConditionsTableContainer > div > div.jtable-busy-message[style='display: none;']")));
 				String name2 = properties.getProperty("StorageCondition"+sc);
 				String nameori = properties.getProperty("SampleOrientation"+sc);
 				String namestcon = properties.getProperty("StabilityCondition"+sc);
 				isRecordSelected2 = selectRecordForMultiStorage(count2, isRecordSelected2, name2, nameori, namestcon);
-				if(sc<noOfStorageConditions)
-				{
-				count2 = 0;
-				isRecordSelected2 = false;
-				}
-			}
-//			int count2 = 0;
-//			boolean isRecordSelected2 = false;
-//			String name2 = properties.getProperty("Storage_Condition_Name");
-//			isRecordSelected2 = selectRecordForStorage(count2, isRecordSelected2, name2);
-			if (isRecordSelected2) {
 				sno++;
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
 				Thread.sleep(3000);
@@ -415,6 +407,23 @@ public class CreateProtocolMltBatchMltConditionMltInterval extends LoginDetails 
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
 				Thread.sleep(2000);
 				sno++;
+				if(sc<noOfStorageConditions)
+				{
+				count2 = 0;
+				isRecordSelected2 = false;
+				}
+				
+			}
+//			int count2 = 0;
+//			boolean isRecordSelected2 = false;
+//			String name2 = properties.getProperty("Storage_Condition_Name");
+//			isRecordSelected2 = selectRecordForStorage(count2, isRecordSelected2, name2);
+			if (isRecordSelected2) {
+				sno++;
+				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
+				Thread.sleep(3000);
+				sno++;
+				
 				driver.findElement(By.id("samplingInProtocolForm")).sendKeys(properties.getProperty("Description"));
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Sampling & Labeling", sno,
 						false);

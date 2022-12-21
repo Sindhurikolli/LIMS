@@ -113,36 +113,37 @@ public class LoadingMulti extends LoginDetails {
 				String loading[] = qtyLoading.split(",");
 				int j=0;
 				
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[8]/input")).sendKeys(loading[j]);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
-			Thread.sleep(2000);
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[8]/input")).sendKeys(loading[j]);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[9]/input")).sendKeys(loading[j+1]);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[9]/input")).sendKeys(loading[j+1]);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			Select uom1 = new Select(driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[10]/select")));
+			Select uom1 = new Select(driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[13]/select")));
 			Thread.sleep(2000);
 			uom1.selectByIndex(1);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[11]/input")).sendKeys(loading[j+2]);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[12]/input")).sendKeys(loading[j+3]);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			Select uom11 = new Select(driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[13]/select")));
-			Thread.sleep(2000);
-			uom11.selectByIndex(1);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
-			Thread.sleep(2000);
-			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[11]/input")).sendKeys(loading[j+2]);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
+//					false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[12]/input")).sendKeys(loading[j+3]);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
+//					false);
+//			Thread.sleep(2000);
+//			sno++;
+//			Select uom11 = new Select(driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr[" + i + "]/td[13]/select")));
+//			Thread.sleep(2000);
+//			uom11.selectByIndex(1);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
 //			WebElement element = driver
 //					.findElement(By.xpath("//*[@id=\"ProtocolRecordsTable\"]/div/table/tbody/tr/td[14]/input"));
 //			((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('readonly','readonly')", element);
@@ -166,7 +167,7 @@ public class LoadingMulti extends LoginDetails {
 			Thread.sleep(2000);
 			String MasterName = properties.getProperty("MasterChamber");
 			String MasterID = properties.getProperty("MasterChamberID");
-			String MasterChamber =MasterName+" | "+MasterID;
+			String MasterChamber =MasterName+"| "+MasterID;
 			System.out.println(MasterChamber);
 			chamber.selectByVisibleText(MasterChamber);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Chamber", sno, false);

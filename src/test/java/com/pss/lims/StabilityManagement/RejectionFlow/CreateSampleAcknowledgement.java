@@ -87,7 +87,8 @@ public class CreateSampleAcknowledgement extends LoginDetails {
 
 		WebDriverWait wait = new WebDriverWait(driver, 240);
 		sno++;
-		driver.findElement(By.id("acknowledgeSampleAckAction")).click();
+		Helper.clickElement(driver, By.id("acknowledgeSampleAckAction"));
+//		driver.findElement(By.id("acknowledgeSampleAckAction")).click();
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Sample Acknowledgment", sno, false);
 		sno++;
 //		driver.findElement(By.id("searchBtnInSampleAck")).click();

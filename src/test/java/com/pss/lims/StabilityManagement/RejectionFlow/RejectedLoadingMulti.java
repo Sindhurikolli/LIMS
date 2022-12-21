@@ -107,62 +107,62 @@ public class RejectedLoadingMulti extends LoginDetails {
 			jse12.executeScript("arguments[0].click();", element12);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
-					.clear();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
-					.sendKeys("4");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
-					.clear();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
-					.sendKeys("1");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			Select uom1 = new Select(
-					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownInStabRejLoading')]")));
-			Thread.sleep(2000);
-			uom1.selectByIndex(1);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
-					.clear();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
-					.sendKeys("2");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
-					.clear();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
-					.sendKeys("3");
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
-					false);
-			Thread.sleep(2000);
-			sno++;
-			Select uom11 = new Select(
-					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownCountInStabRejLoading')]")));
-			Thread.sleep(2000);
-			uom11.selectByIndex(1);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
-			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
+//					.clear();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[8]/input"))
+//					.sendKeys("4");
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
+//					.clear();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[9]/input"))
+//					.sendKeys("1");
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			Select uom1 = new Select(
+//					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownInStabRejLoading')]")));
+//			Thread.sleep(2000);
+//			uom1.selectByIndex(1);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
+//					.clear();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Analysis Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[11]/input"))
+//					.sendKeys("2");
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Analysis Quantity Count", sno,
+//					false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
+//					.clear();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Clear Reference Quantity", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.xpath("//*[@id=\"ProtocolRecordsTableRejList\"]/div/table/tbody/tr/td[12]/input"))
+//					.sendKeys("3");
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Reference Quantity Count", sno,
+//					false);
+//			Thread.sleep(2000);
+//			sno++;
+//			Select uom11 = new Select(
+//					driver.findElement(By.xpath("//*[starts-with(@id,'uomDrpDownCountInStabRejLoading')]")));
+//			Thread.sleep(2000);
+//			uom11.selectByIndex(1);
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select UOM", sno, false);
+//			Thread.sleep(2000);
 			sno++;
 			JavascriptExecutor jse5110 = (JavascriptExecutor) driver;
 			WebElement element5110 = driver.findElement(By.xpath("//*[@id=\"TotalContent\"]/div[3]/ul/li[3]/a"));

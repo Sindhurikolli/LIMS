@@ -135,17 +135,36 @@ public class ScheduleTestMulti extends LoginDetails {
 			for(int i=1;i<=noofSetsforScheduleTest;i++)
 			{
 				int eid = 11;
+				int exteid = 12;
 				String qtyIntervals = properties.getProperty("SetQtyatEachPoint"+i);
+				String extraQtyIntervals = properties.getProperty("SetExtQtyatEachPoint"+i);
 				String Qty[] = qtyIntervals.split(",");
+				String extQty[] = extraQtyIntervals.split(",");
 				for(int j=0;j<Qty.length;j++)
 						{
 					String NumberofSyringesrequiredatEachPoint =  Qty[j].toString();
+					String NumberofExtSyringesrequiredatEachPoint =  extQty[j].toString();
+				
 				driver.findElement(By.id("totalSyrengesDatatext"+eid+"_"+i)).sendKeys(NumberofSyringesrequiredatEachPoint);
+				driver.findElement(By.id("totalSyrengesDatatext"+exteid+"_"+i)).sendKeys(NumberofExtSyringesrequiredatEachPoint);
 				eid = eid+10;
+				exteid=exteid+10;
 						}
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter NumberofSyringesrequiredatEachPoint", sno, false);
 				sno++;
 			}
+			/*
+			 * int totalNoofSetsforScheduleTest =
+			 * Integer.parseInt(properties.getProperty("NoofSetsforScheduleTest")); for(int
+			 * i=1;i<=totalNoofSetsforScheduleTest;i++) { int eid = 12; String qtyIntervals
+			 * = properties.getProperty("SetQtyatEachPoint"+i); String Qty[] =
+			 * qtyIntervals.split(","); for(int j=0;j<Qty.length;j++) { String
+			 * TotalnoofSyringes = Qty[j].toString();
+			 * driver.findElement(By.id("totalSyrengesDatatext"+eid+"_"+i)).sendKeys(
+			 * TotalnoofSyringes); eid = eid+10; } document =
+			 * Utilities.getScreenShotAndAddInLogDoc(driver, document,
+			 * "Enter NumberofSyringesrequiredatEachPoint", sno, false); sno++; }
+			 */
 			Select lifeCycle = new Select(driver.findElement(By.id("lifeCycleInScheduleTestSel")));
 			Thread.sleep(2000);
 			lifeCycle.selectByVisibleText(properties.getProperty("Lifecycle"));
