@@ -126,7 +126,7 @@ public class MicroJobAllotment extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on CheckBox", sno, false);
 			Thread.sleep(3000);
 			sno++;//*[@id="nextBtnInViewJobAllotmentForm"]/span
-			driver.findElement(By.xpath("//*[@id=\"nextBtnInViewJobAllotmentForm\"]/span")).click();
+			driver.findElement(By.xpath("//span[contains(text(),'Next')]")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(4000);
 			
@@ -306,7 +306,7 @@ public class MicroJobAllotment extends SMLoginDetails {
 		}
 		if (perPageNoOfRecordsPresent > 0 && count1 == 0) {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
-				arNumber = driver.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr[1]/td[10]"))
+				arNumber = driver.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr[ \" + i + \" ]/td[10]"))
 						.getText();// documentType
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
 				arNumber = driver.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr/td[10]"))
@@ -336,10 +336,10 @@ public class MicroJobAllotment extends SMLoginDetails {
 					}
 				} else {
 					String arNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr/td[10]"))
+							.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr[ \" + i + \" ]/td[10]"))
 							.getText();
 					if (arNumber.equalsIgnoreCase(arNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr/td[10]"))
+						driver.findElement(By.xpath("//*[@id=\"limsMicroJobAllotmentGrid\"]/div/table/tbody/tr[ \" + i + \" ]/td[10]"))
 								.click();
 						isRecordSelected1 = true;
 						break;

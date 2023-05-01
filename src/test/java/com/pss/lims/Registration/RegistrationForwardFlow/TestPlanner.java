@@ -211,28 +211,28 @@ public class TestPlanner extends RegistrationLoginDetails {
 			WebElement element2211 = driver.findElement(By.id("testsSelBtnInTestsContainerTable"));
 			jse2211.executeScript("arguments[0].click();", element2211);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
-			Thread.sleep(2000);
-			JavascriptExecutor jse21111 = (JavascriptExecutor) driver;
-			WebElement element21111 = driver.findElement(
-					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr/td[3]"));
-			jse21111.executeScript("arguments[0].click();", element21111);
-			Thread.sleep(3000);
-			sno++;
-			Select group = new Select(driver.findElement(
-					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[3]/select")));
-			Thread.sleep(2000);
-			group.selectByVisibleText(properties.getProperty("Group_Name"));
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Group", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			JavascriptExecutor jse11 = (JavascriptExecutor) driver;
-			WebElement element11 = driver.findElement(
-					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[4]/input"));
-			jse11.executeScript("arguments[0].click();", element11);
-			Thread.sleep(3000);
-			
-			Helper.clickElement(driver, By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[5]/input[1]"));
-			Thread.sleep(3000);
+//		    Thread.sleep(2000);
+//			JavascriptExecutor jse21111 = (JavascriptExecutor) driver;
+//			WebElement element21111 = driver.findElement(
+//					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr/td[3]"));
+//			jse21111.executeScript("arguments[0].click();", element21111);
+//			Thread.sleep(3000);
+//			sno++;
+//			Select group = new Select(driver.findElement(
+//					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[3]/select")));
+//			Thread.sleep(2000);
+//			group.selectByVisibleText(properties.getProperty("Group_Name"));
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Group", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			JavascriptExecutor jse11 = (JavascriptExecutor) driver;
+//			WebElement element11 = driver.findElement(
+//					By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[4]/input"));
+//			jse11.executeScript("arguments[0].click();", element11);
+//			Thread.sleep(3000);
+//			
+//			Helper.clickElement(driver, By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[1]/td[5]/input[1]"));
+//			Thread.sleep(3000);
 //			Helper.clickElement(driver, By.xpath("//*[@id=\"testsTableInLimsTestPlannarRegForm\"]/div[2]/table/tbody/tr[2]/td[3]"));
 //			Thread.sleep(3000);
 //			sno++;

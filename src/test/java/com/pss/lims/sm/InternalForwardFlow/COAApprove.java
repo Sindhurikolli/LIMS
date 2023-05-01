@@ -101,10 +101,13 @@ public class COAApprove extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on View Result", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.xpath("//*[starts-with(@id, \"forward\")]")).click();
+			int rows = driver.findElements(By.xpath("//*[@id=\"gridIdInSampleResult\"]/div/table/tbody/tr")).size();
+			for(int i=1;i<=rows;i++) {
+			driver.findElement(By.xpath("//*[@id=\"gridIdInSampleResult\"]/div/table/tbody/tr[" + i + "]/td[10]/input")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Forward", sno, false);
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			sno++;
+			}
 			driver.findElement(By.id("commemtsInSampleResultForApproval"))
 					.sendKeys(properties.getProperty("Approval_Comments"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Comments", sno, false);

@@ -165,11 +165,11 @@ public class SampleQuantityApprove extends SMLoginDetails {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
 //				System.out.println("hi this is ravi");
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[1]/td[29]"))
+						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[1]/td[28]"))
 						.getText();// documentType
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[29]"))
+						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[28]"))
 						.getText();// document
 									// type
 			}
@@ -180,7 +180,7 @@ public class SampleQuantityApprove extends SMLoginDetails {
 				if (totalNoOfRecords > 1) {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String arNumberSequence = driver.findElement(By.xpath(
-								"//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[29]"))
+								"//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[28]"))
 								.getText();// documentTypeName
 						if (arNumber.equalsIgnoreCase(arNumberSequence)) {
 							driver.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ "
@@ -194,7 +194,7 @@ public class SampleQuantityApprove extends SMLoginDetails {
 					}
 				} else {
 					String arNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[29]"))
+							.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[28]"))
 							.getText();
 					if (arNumber.equalsIgnoreCase(arNumberSequence)) {
 						driver.findElement(By.id("renderSampQuantAppInAppBtn")).click();

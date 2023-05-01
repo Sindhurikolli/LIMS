@@ -49,6 +49,16 @@ public class Helper {
 		js.executeScript("arguments[0].scrollIntoView();", element);
 		waitTime(500);
 	}
+	
+	public static void scrollAndClickElement(WebDriver driver, By byObj) throws InterruptedException {
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement element = driver.findElement(byObj);
+		js.executeScript("arguments[0].scrollIntoView();", element);
+		waitTime(500);
+		js.executeScript("arguments[0].click();", element);
+		
+	}
 
 	public static void clickElement(WebDriver driver, By byObj) {
 

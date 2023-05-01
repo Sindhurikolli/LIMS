@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.By.ById;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -29,8 +30,9 @@ import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
+import com.pss.regproject.RegistrationDetails.RegistrationDetails;
 
-public class Customer extends RegistrationLoginDetails {
+public class Customer extends RegistrationDetails {
 
 	@Test
 	public void createCustomer() throws Exception {
@@ -51,12 +53,12 @@ public class Customer extends RegistrationLoginDetails {
 		Thread.sleep(1000);
 		driver.findElement(By.name("loginPassword")).sendKeys(properties.getProperty("Password"));
 		Thread.sleep(1000);
-		Select module = new Select(driver.findElement(By.id("limsModule")));
-		Thread.sleep(1000);
-		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
+//		Select module = new Select(driver.findElement(By.id("limsModule")));
+//		Thread.sleep(1000);
+//		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[3]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -67,9 +69,9 @@ public class Customer extends RegistrationLoginDetails {
 		document.add(new Paragraph("                                     "));
 		sno++;
 		WebDriverWait wait = new WebDriverWait(driver, 240);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='customerRegnPage.do'")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='qmsCustomerRegPage.do'")));
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='customerRegnPage.do'"));
+		WebElement element1 = driver.findElement(By.cssSelector("a[href='qmsCustomerRegPage.do'"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
@@ -98,22 +100,37 @@ public class Customer extends RegistrationLoginDetails {
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 		Thread.sleep(4000);
 		sno++;
-		driver.findElement(By.id("customerNameInCustomerReg")).sendKeys(properties.getProperty("Customer_Name"));
+		driver.findElement(By.id("custNameInCustReg")).sendKeys(properties.getProperty("Customer_Name"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Customer Name", sno, false);
 		Thread.sleep(2000);
 		sno++;
-		driver.findElement(By.id("customerCodeInCustomerReg")).sendKeys(properties.getProperty("Customer_Code"));
+		driver.findElement(By.id("custCodeInCustReg")).sendKeys(properties.getProperty("Customer_Code"));
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Customer Code", sno, false);
 		Thread.sleep(2000);
+		
+		sno++;
+		JavascriptExecutor jse4 = (JavascriptExecutor) driver;
+		WebElement element4 = driver.findElement(By.id("selBtnToAddMarketsInCustReg"));
+		jse4.executeScript("arguments[0].click();", element4);
+		driver.findElement(By.xpath(".//*[@id='marketTableInCustRegnWin']/div/div[3]/table/tbody/tr[1]/td[1]")).click();
+		driver.findElement(By.id("SelBtnInMarketWin"));
+		
+		JavascriptExecutor jse13 = (JavascriptExecutor) driver;
+		WebElement element13 = driver.findElement(By.id("SelBtnInMarketWin"));
+		jse13.executeScript("arguments[0].click();", element13);
+		Thread.sleep(3000);
+		
+		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
+		Thread.sleep(3000);
 		sno++;
 		JavascriptExecutor jse12 = (JavascriptExecutor) driver;
-		WebElement element12 = driver.findElement(By.id("selAppFromUserInCustomerReg"));
+		WebElement element12 = driver.findElement(By.id("CusCrtAppSelect"));
 		jse12.executeScript("arguments[0].click();", element12);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
 		Thread.sleep(5000);
 		sno++;
 		JavascriptExecutor jse3 = (JavascriptExecutor) driver;
-		WebElement element3 = driver.findElement(By.id("locTreeInCalPmBdm_2_switch"));
+		WebElement element3 = driver.findElement(By.id("locTreeInQmsProdReg_2_switch"));
 		jse3.executeScript("arguments[0].click();", element3);
 		Thread.sleep(3000);
 		driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
@@ -131,19 +148,19 @@ public class Customer extends RegistrationLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			JavascriptExecutor jse4 = (JavascriptExecutor) driver;
-			WebElement element4 = driver.findElement(By.id("usersSelBtnInLocaBasedUser"));
-			jse4.executeScript("arguments[0].click();", element4);
+			JavascriptExecutor jse14 = (JavascriptExecutor) driver;
+			WebElement element14 = driver.findElement(By.id("usersSelBtnInLocaBasedUser"));
+			jse14.executeScript("arguments[0].click();", element14);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
+			
 			Thread.sleep(3000);
 			sno++;
 			JavascriptExecutor jse6 = (JavascriptExecutor) driver;
-			WebElement element6 = driver.findElement(By.xpath("//*[@id=\"TotalContent\"]/div[3]/ul/li[3]/a"));
-			jse6.executeScript("arguments[0].scrollIntoView(true);", element6);
-			Thread.sleep(1000);
+			WebElement element6 = driver.findElement(By.id("customerRegSubBtnId"));
 			jse6.executeScript("arguments[0].click();", element6);
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Finish", sno, false);
-			Thread.sleep(2000);
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click On Submit", sno,
+					false);
+			Thread.sleep(3000);
 			sno++;
 			driver.findElement(By.id("eSignPwdInWnd")).sendKeys(properties.getProperty("Esign_Password"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter E-Signature Password", sno,
@@ -176,6 +193,8 @@ public class Customer extends RegistrationLoginDetails {
 			Assert.assertTrue(false);
 		}
 	}
+	
+	
 
 	@AfterMethod
 	public void testIT(ITestResult result)

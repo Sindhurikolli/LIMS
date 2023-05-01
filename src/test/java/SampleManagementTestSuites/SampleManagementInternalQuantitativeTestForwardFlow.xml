@@ -8,6 +8,19 @@
 		<listener class-name="com.pss.lims.Listners.SuiteFailingInvokedMethodListener"/>
 			
 </listeners>
+<parameter name="SAMPLE_MANAGEMENT_QUANTITATIVETEST_FORWARDED_FLOW" value="QUANTITATIVETEST"/>
+	
+	
+    <test name="SampleManagementPropertyFileUpdate">
+        <classes>
+      <class name="com.pss.lims.PropertiesFileUpdate.SampleManagementPropertyFileUpdate">
+      
+      <methods>
+		<include name="SINGLEQUANTITATIVE_TEST"/>
+	  </methods>   
+      </class> 
+        </classes>
+    </test>
 
 	<test name="InternalForwardFlowTestSuiteReport">
 

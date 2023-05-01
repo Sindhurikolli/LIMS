@@ -28,8 +28,9 @@ import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Utilities;
+import com.pss.regproject.RegistrationDetails.RegistrationDetails;
 
-public class ProductApproval extends RegistrationLoginDetails {
+public class ProductApproval extends RegistrationDetails {
 
 	@Test
 	public void approveProduct() throws Exception {
@@ -50,12 +51,12 @@ public class ProductApproval extends RegistrationLoginDetails {
 		Thread.sleep(1000);
 		driver.findElement(By.name("loginPassword")).sendKeys(properties.getProperty("Password"));
 		Thread.sleep(1000);
-		Select module = new Select(driver.findElement(By.id("limsModule")));
-		Thread.sleep(1000);
-		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
+//		Select module = new Select(driver.findElement(By.id("limsModule")));
+//		Thread.sleep(1000);
+//		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[3]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -66,15 +67,15 @@ public class ProductApproval extends RegistrationLoginDetails {
 		document.add(new Paragraph("                                     "));
 		sno++;
 		WebDriverWait wait = new WebDriverWait(driver, 240);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='productAppPageInSample.do'")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='qmsProductApp.do'")));
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='productAppPageInSample.do'"));
+		WebElement element1 = driver.findElement(By.cssSelector("a[href='qmsProductApp.do'"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Product", sno, false);
 		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#productTableInApproval > div > div.jtable-busy-message[style='display: none;']")));
+				By.cssSelector("#qmsProductApprovalGrid > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(4000);
 		methodToapproveProduct();
 		document.close();
@@ -96,12 +97,20 @@ public class ProductApproval extends RegistrationLoginDetails {
 			sno++;
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
 			Thread.sleep(4000);
+			
 			sno++;
-			driver.findElement(By.id("commentsInProductApp")).sendKeys(properties.getProperty("Approval_Comments"));
+			driver.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[10]/button")).click();
+			
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View", sno,
+					false);
+			Thread.sleep(4000);
+			
+			sno++;
+			driver.findElement(By.id("commentsInViewQmsProdoctApp")).sendKeys(properties.getProperty("Approval_Comments"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Comments", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("approveBtnInProdApproval")).click();
+			driver.findElement(By.id("approveBtnRegProd")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Approve", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -139,13 +148,13 @@ public class ProductApproval extends RegistrationLoginDetails {
 	private boolean selectRecordForStorageLocation(int count, boolean isRecordSelected, String storageCondition)
 			throws Exception {
 		// TODO Auto-generated method stub
-		WebElement table = driver.findElement(By.id("productTableInApproval"));
+		WebElement table = driver.findElement(By.id("qmsProductApprovalGrid"));
 		WebElement tableBody = table.findElement(By.tagName("tbody"));
 		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
 		int totalNoOfRecords = 0;
 		int noOfRecordsChecked = 0;
 		if (perPageNoOfRecordsPresent > 0) {
-			String a = driver.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/div[4]/div[2]/span"))
+			String a = driver.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/div[4]/div[2]/span"))
 					.getText();// For
 			// Ex:
 			// Showing
@@ -167,11 +176,11 @@ public class ProductApproval extends RegistrationLoginDetails {
 			if ((totalNoOfRecords > 1) && ((storageCondition == null) || ("".equalsIgnoreCase(storageCondition)))) {
 //				System.out.println("hi this is ravi");
 				storageCondition = driver
-						.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr[1]/td[3]"))
+						.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr[1]/td[2]"))
 						.getText();// documentType
 			} else if ((storageCondition == null) || ("".equalsIgnoreCase(storageCondition))) {
 				storageCondition = driver
-						.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr/td[3]"))
+						.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 						.getText();// document
 									// type
 			}
@@ -183,13 +192,13 @@ public class ProductApproval extends RegistrationLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String DevNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"productTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
+										"//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
 								.getText();// documentTypeName
 						if (storageCondition.equalsIgnoreCase(DevNumberSequence)) {
 							// driver.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr[
 							// " + i+ " ]/td[11]/button")).click();
 							driver.findElement(By
-									.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
+									.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -200,11 +209,11 @@ public class ProductApproval extends RegistrationLoginDetails {
 					}
 				} else {
 					String DevNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr/td[3]"))
+							.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 							.getText();
 					if (storageCondition.equalsIgnoreCase(DevNumberSequence)) {
 						// driver.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr/td[11]/button")).click();
-						driver.findElement(By.xpath("//*[@id=\"productTableInApproval\"]/div/table/tbody/tr/td[3]"))
+						driver.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 								.click();
 						isRecordSelected = true;
 						break;
@@ -213,10 +222,10 @@ public class ProductApproval extends RegistrationLoginDetails {
 				noOfRecordsChecked += perPageNoOfRecordsPresent;
 				if ((!isRecordSelected) && (noOfRecordsChecked < totalNoOfRecords)) {
 					driver.findElement(By.cssSelector(
-							"#productTableInApproval > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
+							"#qmsProductApprovalGrid > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
 							.click();// next page in Document approve list
 					Thread.sleep(4000);
-					table = driver.findElement(By.id("productTableInApproval"));// Document Tree approve table
+					table = driver.findElement(By.id("qmsProductApprovalGrid"));// Document Tree approve table
 					tableBody = table.findElement(By.tagName("tbody"));
 					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
 				}

@@ -90,7 +90,7 @@ public class TestApproval extends SMLoginDetails {
 		Thread.sleep(3000);
 		int count = 0;
 		boolean isRecordSelected = false;
-		String storageCondition = properties.getProperty("Test_Name");
+		String storageCondition = properties.getProperty("Test_Type");
 		isRecordSelected = selectRecordForStorageLocation(count, isRecordSelected, storageCondition);
 		if (isRecordSelected) {
 			sno++;
@@ -197,10 +197,10 @@ public class TestApproval extends SMLoginDetails {
 					}
 				} else {
 					String DevNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[5]"))
+							.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[3]"))
 							.getText();
 					if (storageCondition.contains(DevNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[5]"))
+						driver.findElement(By.xpath("//*[@id=\"testTableInApproval\"]/div/table/tbody/tr/td[3]"))
 								.click();
 						isRecordSelected = true;
 						break;

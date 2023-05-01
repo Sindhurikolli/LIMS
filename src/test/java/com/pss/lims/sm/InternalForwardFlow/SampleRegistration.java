@@ -101,17 +101,16 @@ public class SampleRegistration extends SMLoginDetails {
 		Thread.sleep(5000);
 		sno++;
 		driver.findElement(By.id("selProdBtnInSampleReg")).click();
-		Thread.sleep(5000);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
-		
+		Thread.sleep(5000);
 		sno++;
-		driver.findElement(By.id("locTreeInLimsSmReg_2_switch")).click();
+		driver.findElement(By.id("locTreeInLimsSmReg_4_span")).click();
 		Thread.sleep(3000);
-		driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
-		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Location", sno, false);
-		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#productsTableContainer > div > div.jtable-busy-message[style='display: none;']")));
-		Thread.sleep(2000);
+		//driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
+//		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Location", sno, false);
+//		wait.until(ExpectedConditions.presenceOfElementLocated(
+//				By.cssSelector("#productsTableContainer > div > div.jtable-busy-message[style='display: none;']")));
+//		Thread.sleep(2000);
 		sno++;
 		int count1 = 0;
 		boolean isRecordSelected1 = false;
@@ -130,31 +129,37 @@ public class SampleRegistration extends SMLoginDetails {
 			spec.selectByVisibleText(properties.getProperty("Specification_Name"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Specification", sno, false);
 			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.id("selApprovedByBtnInLimsSampleReg")).click();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
-			Thread.sleep(2000);
-			sno++;
-			driver.findElement(By.id("locTreeInCalPmBdm_2_switch")).click();
-			Thread.sleep(3000);
-			driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Location", sno, false);
-			wait.until(ExpectedConditions.presenceOfElementLocated(
-					By.cssSelector("#usersTableContainer > div > div.jtable-busy-message[style='display: none;']")));
-			Thread.sleep(3000);
-			sno++;
-			int count = 0;
-			boolean isRecordSelected = false;
-			String selectingUserSingleApproval = properties.getProperty("LastName");
-			isRecordSelected = Helper.selectingSingleApprovalRecord(driver, selectingUserSingleApproval,
-					isRecordSelected, count);
-			if (isRecordSelected) {
-				sno++;
-				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
-				Thread.sleep(3000);
-				driver.findElement(By.id("usersSelBtnInLocaBasedUser")).click();
-				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
-				Thread.sleep(3000);
+//			sno++;
+//			driver.findElement(By.name("numOfContInLimsSampleReg")).sendKeys(properties.getProperty("NoofSamplesCountQuantity"));
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.name("batchNoInLimsSampleReg")).sendKeys(properties.getProperty("NoofSamplesCountQuantity"));
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.id("selApprovedByBtnInLimsSampleReg")).click();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
+//			Thread.sleep(2000);
+//			sno++;
+//			driver.findElement(By.id("locTreeInCalPmBdm_2_switch")).click();
+//			Thread.sleep(3000);
+//			driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
+//			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Location", sno, false);
+//			wait.until(ExpectedConditions.presenceOfElementLocated(
+//					By.cssSelector("#usersTableContainer > div > div.jtable-busy-message[style='display: none;']")));
+//			Thread.sleep(3000);
+//			sno++;
+//			int count = 0;
+//			boolean isRecordSelected = false;
+//			String selectingUserSingleApproval = properties.getProperty("LastName");
+//			isRecordSelected = Helper.selectingSingleApprovalRecord(driver, selectingUserSingleApproval,
+//					isRecordSelected, count);
+//			if (isRecordSelected) {
+//				sno++;
+//				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Record", sno, false);
+//				Thread.sleep(3000);
+//				driver.findElement(By.id("usersSelBtnInLocaBasedUser")).click();
+//				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Select", sno, false);
+//				Thread.sleep(3000);
 				sno++;
 				driver.findElement(By.id("numOfContInLimsSampleReg"))
 						.sendKeys(properties.getProperty("No_Of_Containers"));
@@ -167,30 +172,13 @@ public class SampleRegistration extends SMLoginDetails {
 				coaDateFormat.selectByIndex(3);
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter COA Date Foprmat", sno,
 						false);
-//				sno++;
-//				Thread.sleep(2000);
-//				driver.findElement(By.id("manufactBrowseInLimsSampleReg")).click();
-//				Thread.sleep(5000);
-//				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Select Manufacturer", sno, false);
-				Thread.sleep(5000);
-//				sno++;
-//				driver.findElement(By.id("searchBtnInlimsManufactDetailsSearchForm")).click();
-//				Thread.sleep(5000);
-//				int count111 = 0;
-//				boolean isRecordSelected111 = false;
-//				String name111 = properties.getProperty("Manufacturer_Code");
-//				isRecordSelected111 = selectRecordForManufacturer(count111, isRecordSelected111, name111);
-//				Thread.sleep(5000);
-//				driver.findElement(By.id("selectBtnInlimsManufactDetailsSearchForm")).click();
-//				Thread.sleep(3000);
-//				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Manufacturer Selected", sno, false);
-//				Thread.sleep(3000);
 				sno++;
+				Thread.sleep(2000);
 				driver.findElement(By.id("batchNoInLimsSampleReg")).sendKeys(properties.getProperty("Batch_No"));
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter Batch No", sno, false);
 				Thread.sleep(3000);
 				sno++;
-				SimpleDateFormat formattedDate = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat formattedDate = new SimpleDateFormat("d/M/yyyy");
 				Calendar c = Calendar.getInstance();
 				c.add(Calendar.DATE, 730); // number of days to add
 				String futureDate = (String) (formattedDate.format(c.getTime()));
@@ -216,25 +204,27 @@ public class SampleRegistration extends SMLoginDetails {
 				JavascriptExecutor jse1 = (JavascriptExecutor) driver;
 				WebElement element1 = driver.findElement(By.id("manufactDateInLimsSampleReg"));
 				jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
-				element1.sendKeys(sdf.format(date));
+				Thread.sleep(2000);
+				sno++;
+				driver.findElement(By.id("manufactDateInLimsSampleReg")).sendKeys(sdf.format(date));
+				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter Date", sno, false);
+				Thread.sleep(4000);
+				sno++;
+				SimpleDateFormat sdf33 = new SimpleDateFormat("dd/MM/yyyy");
+				Date date1 = new Date();
 				Thread.sleep(3000);
-//				sno++;
-//				driver.findElement(By.className("ui-datepicker-today")).click();//sendKeys(sdf.format(date));
+				JavascriptExecutor jse33 = (JavascriptExecutor) driver;
+				WebElement element33 = driver.findElement(By.id("effectiveDateInLimsSampleReg"));
+				jse33.executeScript("arguments[0].scrollIntoView(true);", element33);
+				Thread.sleep(2000);
+				sno++;
+				driver.findElement(By.id("effectiveDateInLimsSampleReg")).sendKeys(sdf33.format(date));
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter Date", sno, false);
 				Thread.sleep(4000);
 				sno++;
-				// driver.findElement(By.id("effectiveDateInLimsSampleReg")).click();
-				//Thread.sleep(4000);
-				WebElement eDate = driver.findElement(By.id("effectiveDateInLimsSampleReg"));
-				jse1.executeScript("arguments[0].click();", eDate);
-				eDate.sendKeys(sdf.format(date));
-				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter Date", sno, false);
-				Thread.sleep(4000);
-//				driver.findElement(By.id("batchSizeInLimsSampleReg")).click();
-//				driver.findElement(By.id("conditionInLimsSampleReg")).sendKeys(properties.getProperty("Condition"));
-//				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, " Enter Condition", sno, false);
-//				Thread.sleep(4000);
-				sno++;
+				Thread.sleep(2000);
+				driver.findElement(By.id("numberInLimsSampleReg")).sendKeys(properties.getProperty("NoofSamples"));
+				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter No Of Batches", sno, false);
 				jse11.executeScript("arguments[0].scrollIntoView(true);", element11);
 				Thread.sleep(1000);
 				jse11.executeScript("arguments[0].click();", element11);
@@ -268,7 +258,7 @@ public class SampleRegistration extends SMLoginDetails {
 						.getText();
 				String[] parts = arNumText.split(":");
 				System.out.println(parts[1]);
-				String arNo = parts[1].trim();
+				String arNo = parts[1].substring(0, 17);
 				System.out.println(arNo);
 				PropertiesConfiguration properties = new PropertiesConfiguration(
 						"src/test/java/LIMSUIProperties/SampleManagement.properties");
@@ -294,7 +284,7 @@ public class SampleRegistration extends SMLoginDetails {
 				document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Logout", sno, true);
 
 			}
-		} else {
+		 else {
 			System.out.println("Record is not Selected");
 			Assert.assertTrue(false);
 		}
@@ -347,7 +337,7 @@ public class SampleRegistration extends SMLoginDetails {
 							JavascriptExecutor jse9 = (JavascriptExecutor) driver;
 							WebElement element9 = driver
 									.findElement(By.xpath("//*[@id=\"testGridInLimsSampleReg\"]/div/table/tbody/tr[ "
-											+ i + " ]/td[2]/input"));
+											+ i + " ]/td[1]/input"));
 							jse9.executeScript("arguments[0].click();", element9);
 							isRecordSelected11 = true;
 							break;
@@ -363,7 +353,7 @@ public class SampleRegistration extends SMLoginDetails {
 					if (name11.contains(productCodeSequence)) {
 						JavascriptExecutor jse11 = (JavascriptExecutor) driver;
 						WebElement element11 = driver.findElement(
-								By.xpath("//*[@id=\"testGridInLimsSampleReg\"]/div/table/tbody/tr/td[2]/input"));
+								By.xpath("//*[@id=\"testGridInLimsSampleReg\"]/div/table/tbody/tr/td[1]/input"));
 						jse11.executeScript("arguments[0].click();", element11);
 						isRecordSelected11 = true;
 						break;
@@ -415,7 +405,7 @@ public class SampleRegistration extends SMLoginDetails {
 			if ((totalNoOfRecords > 1) && ((product == null) || ("".equalsIgnoreCase(product)))) {
 //				System.out.println("hi this is ravi");
 				product = driver
-						.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[1]/td[2]"))
+						.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
 						.getText();// documentType
 			} else if ((product == null) || ("".equalsIgnoreCase(product))) {
 				product = driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
@@ -433,13 +423,13 @@ public class SampleRegistration extends SMLoginDetails {
 										"//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
 								.getText();// documentTypeName
 						if (product.equalsIgnoreCase(productCodeSequence)) {
-							driver.findElement(By.xpath(
-									"//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
-									.click();
-//							JavascriptExecutor jse9 = (JavascriptExecutor) driver;
-//							WebElement element9 = driver.findElement(By.xpath(
-//									"//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[2]"));
-//							jse9.executeScript("arguments[0].click();", element9);
+//							driver.findElement(By.xpath(
+//									"//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
+//									.click();
+							JavascriptExecutor jse9 = (JavascriptExecutor) driver;
+							WebElement element9 = driver.findElement(By.xpath(
+									"//*[@id=\"productsTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[2]"));
+							jse9.executeScript("arguments[0].click();", element9);
 //							Thread.sleep(2000);
 							isRecordSelected1 = true;
 							break;
@@ -453,12 +443,12 @@ public class SampleRegistration extends SMLoginDetails {
 							.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
 							.getText();
 					if (product.equalsIgnoreCase(productCodeSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
-								.click();
-//						JavascriptExecutor jse11 = (JavascriptExecutor) driver;
-//						WebElement element11 = driver
-//								.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"));
-//						jse11.executeScript("arguments[0].click();", element11);
+//						driver.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"))
+//								.click();
+						JavascriptExecutor jse11 = (JavascriptExecutor) driver;
+						WebElement element11 = driver
+								.findElement(By.xpath("//*[@id=\"productsTableContainer\"]/div/table/tbody/tr/td[2]"));
+						jse11.executeScript("arguments[0].click();", element11);
 //						Thread.sleep(2000);
 						isRecordSelected1 = true;
 						break;
@@ -478,100 +468,6 @@ public class SampleRegistration extends SMLoginDetails {
 
 		}
 		return isRecordSelected1;
-	}
-	private boolean selectRecordForManufacturer(int count111, boolean isRecordSelected111, String Mfgcode) throws Exception {
-		// TODO Auto-generated method stub
-		WebElement table = driver.findElement(By.id("manufacturerDetailsSelJtable"));
-		WebElement tableBody = table.findElement(By.tagName("tbody"));
-		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
-		int totalNoOfRecords = perPageNoOfRecordsPresent;
-		int noOfRecordsChecked = 0;
-//		if (perPageNoOfRecordsPresent > 0) {
-//			String a = driver.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/div[4]/div[2]/span"))
-//					.getText();// For
-//			// Ex:
-//			// Showing
-//			// 1-1
-//			// of
-//			// 1
-////			System.out.println("hi:" + a);
-//			String[] parts = a.split(" of ");
-////			System.out.println("parts:" + parts.toString());
-//			try {
-//				totalNoOfRecords = Integer.parseInt(parts[1].trim());
-//				System.out.println(totalNoOfRecords);
-//			} catch (Exception e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
-		if (perPageNoOfRecordsPresent > 0 && count111 == 0) {
-//			System.out.println(insid);
-			if ((totalNoOfRecords > 1) && ((Mfgcode == null) || ("".equalsIgnoreCase(Mfgcode)))) {
-//				System.out.println("hi this is ravi");
-				Mfgcode = driver
-						.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr[1]/td[2]"))
-						.getText();// documentType
-			} else if ((Mfgcode == null) || ("".equalsIgnoreCase(Mfgcode))) {
-				Mfgcode = driver.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr/td[2]"))
-						.getText();// document
-									// type
-			}
-			++count111;
-		}
-		if (perPageNoOfRecordsPresent > 0) {
-			while (noOfRecordsChecked < totalNoOfRecords) {
-				if (totalNoOfRecords > 1) {
-					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
-						String MfgcodeSequence = driver
-								.findElement(By.xpath(
-										"//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
-								.getText();// documentTypeName
-						if (Mfgcode.equalsIgnoreCase(MfgcodeSequence)) {
-//							driver.findElement(By.xpath(
-//									"//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
-//									.click();
-							JavascriptExecutor jse9 = (JavascriptExecutor) driver;
-							WebElement element9 = driver.findElement(By.xpath(
-									"//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr[ " + i + " ]/td[2]"));
-							jse9.executeScript("arguments[0].click();", element9);
-//							Thread.sleep(2000);
-							isRecordSelected111 = true;
-							break;
-						}
-					}
-					if (isRecordSelected111) {
-						break;
-					}
-				} else {
-					String MfgcodeSequence = driver
-							.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr/td[2]"))
-							.getText();
-					if (Mfgcode.equalsIgnoreCase(MfgcodeSequence)) {
-//						driver.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr/td[2]"))
-//								.click();
-						JavascriptExecutor jse11 = (JavascriptExecutor) driver;
-						WebElement element11 = driver
-								.findElement(By.xpath("//*[@id=\"manufacturerDetailsSelJtable\"]/div/table/tbody/tr/td[2]"));
-						jse11.executeScript("arguments[0].click();", element11);
-//						Thread.sleep(2000);
-						isRecordSelected111 = true;
-						break;
-					}
-				}
-				noOfRecordsChecked += perPageNoOfRecordsPresent;
-				if ((!isRecordSelected111) && (noOfRecordsChecked < totalNoOfRecords)) {
-					driver.findElement(By.cssSelector(
-							"#manufacturerDetailsSelJtable > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
-							.click();// next page in Document approve list
-					Thread.sleep(4000);
-					table = driver.findElement(By.id("manufacturerDetailsSelJtable"));// Document Tree approve table
-					tableBody = table.findElement(By.tagName("tbody"));
-					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
-				}
-			}
-
-		}
-		return isRecordSelected111;
 	}
 
 	@AfterMethod

@@ -174,10 +174,10 @@ public class SampleQuantity extends SMLoginDetails {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
 //				System.out.println("hi this is ravi");
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[18]"))
+						.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
 						.getText();// documentType
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
-				arNumber = driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr/td[18]"))
+				arNumber = driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr/td[19]"))
 						.getText();// document
 									// type
 			}
@@ -189,11 +189,11 @@ public class SampleQuantity extends SMLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String arNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[18]"))
+										"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[19]"))
 								.getText();// documentTypeName
 						if (arNumber.equalsIgnoreCase(arNumberSequence)) {
 							driver.findElement(By.xpath(
-									"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[18]"))
+									"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[19]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -204,10 +204,10 @@ public class SampleQuantity extends SMLoginDetails {
 					}
 				} else {
 					String arNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[18]"))
+							.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
 							.getText();
 					if (arNumber.equalsIgnoreCase(arNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[18]"))
+						driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
 								.click();
 						isRecordSelected = true;
 						break;

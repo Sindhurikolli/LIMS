@@ -177,10 +177,10 @@ public class SampleResult extends SMLoginDetails {
 		}
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((record == null) || ("".equalsIgnoreCase(record)))) {
-				record = driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[1]/td[7]"))
+				record = driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[1]/td[10]"))
 						.getText();// documentType
 			} else if ((record == null) || ("".equalsIgnoreCase(record))) {
-				record = driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[7]"))
+				record = driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[10]"))
 						.getText();// document
 									// type
 			}
@@ -192,11 +192,11 @@ public class SampleResult extends SMLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String DevNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[ " + i + " ]/td[7]"))
+										"//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[ " + i + " ]/td[10]"))
 								.getText();// documentTypeName
 						if (record.equalsIgnoreCase(DevNumberSequence)) {
 							driver.findElement(
-									By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[ " + i + " ]/td[7]"))
+									By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr[ " + i + " ]/td[10]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -207,10 +207,10 @@ public class SampleResult extends SMLoginDetails {
 					}
 				} else {
 					String DevNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[7]"))
+							.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[10]"))
 							.getText();
 					if (record.equalsIgnoreCase(DevNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[7]"))
+						driver.findElement(By.xpath("//*[@id=\"sampleResultViewGrid\"]/div/table/tbody/tr/td[10]"))
 								.click();
 						isRecordSelected = true;
 						break;

@@ -28,8 +28,9 @@ import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Utilities;
+import com.pss.regproject.RegistrationDetails.RegistrationDetails;
 
-public class SpecificationApproval extends RegistrationLoginDetails {
+public class SpecificationApproval extends RegistrationDetails {
 
 	@Test
 	public void approveSpecification() throws Exception {
@@ -50,12 +51,12 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 		Thread.sleep(1000);
 		driver.findElement(By.name("loginPassword")).sendKeys(properties.getProperty("Password"));
 		Thread.sleep(1000);
-		Select module = new Select(driver.findElement(By.id("limsModule")));
-		Thread.sleep(1000);
-		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
+//		Select module = new Select(driver.findElement(By.id("limsModule")));
+//		Thread.sleep(1000);
+//		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[3]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -66,15 +67,15 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 		document.add(new Paragraph("                                     "));
 		sno++;
 		WebDriverWait wait = new WebDriverWait(driver, 240);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='specAppPageInSample.do'")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='qmsSpecificationApp.do'")));
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='specAppPageInSample.do'"));
+		WebElement element1 = driver.findElement(By.cssSelector("a[href='qmsSpecificationApp.do'"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Specification", sno, false);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
-				"#specRegDetailsTableInSpecApproval > div > div.jtable-busy-message[style='display: none;']")));
+				"#qmsSpecificationRegApprovalGrid > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(4000);
 		methodToApproveSpecification();
 		document.close();
@@ -96,16 +97,23 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View", sno,
 					false);
 			Thread.sleep(4000);
+			sno++;
+			driver.findElement(By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[9]/button")).click();
+			
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View", sno,
+					false);
+			Thread.sleep(4000);
+			
 //			sno++;
 //			driver.findElement(By.id("closeBtnInSpecApp")).click();
 //			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Close", sno, false);
 //			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.id("commentsInViewSpecApp")).sendKeys(properties.getProperty("Approval_Comments"));
+			driver.findElement(By.id("commentsInViewQmsSpecAppr")).sendKeys(properties.getProperty("Approval_Comments"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Comments", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("approveBtnInSpecApp")).click();
+			driver.findElement(By.id("apprBtnInRegSpecApprovalWin")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Approve", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -143,14 +151,14 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 	private boolean selectRecordForSpecification(int count, boolean isRecordSelected, String specification)
 			throws Exception {
 		// TODO Auto-generated method stub
-		WebElement table = driver.findElement(By.id("specRegDetailsTableInSpecApproval"));
+		WebElement table = driver.findElement(By.id("qmsSpecificationRegApprovalGrid"));
 		WebElement tableBody = table.findElement(By.tagName("tbody"));
 		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
 		int totalNoOfRecords = 0;
 		int noOfRecordsChecked = 0;
 		if (perPageNoOfRecordsPresent > 0) {
 			String a = driver
-					.findElement(By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/div[4]/div[2]/span"))
+					.findElement(By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/div[4]/div[2]/span"))
 					.getText();// For
 			// Ex:
 			// Showing
@@ -173,12 +181,12 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 //				System.out.println("hi this is ravi");
 				specification = driver
 						.findElement(
-								By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr[1]/td[3]"))
+								By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 						.getText();// documentType
 			} else if ((specification == null) || ("".equalsIgnoreCase(specification))) {
 				specification = driver
 						.findElement(
-								By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr/td[3]"))
+								By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 						.getText();// document
 				// type
 			}
@@ -189,12 +197,12 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 				if (totalNoOfRecords > 1) {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String specificationSequence = driver.findElement(By.xpath(
-								"//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
+								"//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[2]"))
 								.getText();// documentTypeName
 						if (specification.equalsIgnoreCase(specificationSequence)) {
 							driver.findElement(
-									By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr[ " + i
-											+ " ]/td[3]"))
+									By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr[ " + i
+											+ " ]/td[2]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -206,11 +214,11 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 				} else {
 					String specificationSequence = driver
 							.findElement(
-									By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr/td[3]"))
+									By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 							.getText();
 					if (specification.equalsIgnoreCase(specificationSequence)) {
 						driver.findElement(
-								By.xpath("//*[@id=\"specRegDetailsTableInSpecApproval\"]/div/table/tbody/tr/td[3]"))
+								By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[2]"))
 								.click();
 						isRecordSelected = true;
 						break;
@@ -219,10 +227,10 @@ public class SpecificationApproval extends RegistrationLoginDetails {
 				noOfRecordsChecked += perPageNoOfRecordsPresent;
 				if ((!isRecordSelected) && (noOfRecordsChecked < totalNoOfRecords)) {
 					driver.findElement(By.cssSelector(
-							"#specRegDetailsTableInSpecApproval > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
+							"#qmsSpecificationRegApprovalGrid > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
 							.click();// next page in Document approve list
 					Thread.sleep(4000);
-					table = driver.findElement(By.id("specRegDetailsTableInSpecApproval"));// Document Tree approve
+					table = driver.findElement(By.id("qmsSpecificationRegApprovalGrid"));// Document Tree approve
 																							// table
 					tableBody = table.findElement(By.tagName("tbody"));
 					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();

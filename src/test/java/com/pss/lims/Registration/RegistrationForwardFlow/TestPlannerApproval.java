@@ -191,7 +191,7 @@ public class TestPlannerApproval extends RegistrationLoginDetails {
 								.getText();// documentTypeName
 						if (storageCondition.equalsIgnoreCase(DevNumberSequence)) {
 							driver.findElement(By.xpath("//*[@id=\"TestPlannerApprovalTable\"]/div/table/tbody/tr[ " + i
-									+ " ]/td[29]/button")).click();
+									+ " ]/td[31]/button")).click();
 							// *[@id="TestPlannerApprovalTable"]/div/table/tbody/tr/td[29]/button
 							isRecordSelected = true;
 							break;
@@ -206,7 +206,7 @@ public class TestPlannerApproval extends RegistrationLoginDetails {
 							.getText();
 					if (storageCondition.equalsIgnoreCase(DevNumberSequence)) {
 						driver.findElement(
-								By.xpath("//*[@id=\"TestPlannerApprovalTable\"]/div/table/tbody/tr/td[29]/button"))
+								By.xpath("//*[@id=\"TestPlannerApprovalTable\"]/div/table/tbody/tr/td[31]/button"))
 								.click();
 						isRecordSelected = true;
 						break;

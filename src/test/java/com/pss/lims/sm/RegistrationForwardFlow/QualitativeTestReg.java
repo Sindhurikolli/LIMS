@@ -24,11 +24,12 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
+import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.login.SMLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Utilities;
 
-public class QualitativeTestReg extends SMLoginDetails {
+public class QualitativeTestReg extends RegistrationLoginDetails {
 
 	@Test
 	public void createTest() throws Exception {

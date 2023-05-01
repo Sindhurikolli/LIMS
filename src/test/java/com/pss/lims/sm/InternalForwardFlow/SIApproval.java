@@ -27,6 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.SMLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class SIApproval extends SMLoginDetails {
@@ -86,7 +87,13 @@ public class SIApproval extends SMLoginDetails {
 	}
 
 	private void methodToapproveSI() throws Exception {
-
+		sno++;
+		driver.findElement(By.id("arNumberInPassJobApproval")).sendKeys(properties.getProperty("AR_Number"));
+		Thread.sleep(2000);
+		sno++;
+		driver.findElement(By.id("searchBtnInPassJobApprv")).click();
+		document=Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Search", sno, false);
+		Thread.sleep(2000);
 		sno++;
 		int count = 0;
 		boolean isRecordSelected = false;
@@ -96,8 +103,9 @@ public class SIApproval extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
 			Thread.sleep(4000);
 			sno++;
-			driver.findElement(By.id("forwardActionpassJobAppRadioBtn")).click();
-			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Approve", sno, false);
+			Helper.clickElement(driver, By.id("forwardActionpassJobAppRadioBtn"));
+			//driver.findElement(By.id("forwardActionpassJobAppRadioBtn")).click();
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Approve", sno, false);
 			Thread.sleep(3000);
 			sno++;
 			driver.findElement(By.id("reasonInPassJobApp")).sendKeys(properties.getProperty("Approval_Comments"));
@@ -168,10 +176,10 @@ public class SIApproval extends SMLoginDetails {
 		}
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((ARNumber == null) || ("".equalsIgnoreCase(ARNumber)))) {
-				ARNumber = driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[1]/td[14]"))
+				ARNumber = driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[1]/td[17]"))
 						.getText();// documentType
 			} else if ((ARNumber == null) || ("".equalsIgnoreCase(ARNumber))) {
-				ARNumber = driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[14]"))
+				ARNumber = driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[17]"))
 						.getText();// document
 									// type
 			}
@@ -183,11 +191,11 @@ public class SIApproval extends SMLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String ARNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[14]"))
+										"//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[17]"))
 								.getText();// documentTypeName
 						if (ARNumber.equalsIgnoreCase(ARNumberSequence)) {
 							driver.findElement(
-									By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[14]"))
+									By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[17]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -198,10 +206,10 @@ public class SIApproval extends SMLoginDetails {
 					}
 				} else {
 					String ARNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[14]"))
+							.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[17]"))
 							.getText();
 					if (ARNumber.equalsIgnoreCase(ARNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[14]"))
+						driver.findElement(By.xpath("//*[@id=\"passJobApprovalGrid\"]/div/table/tbody/tr/td[17]"))
 								.click();
 						isRecordSelected = true;
 						break;

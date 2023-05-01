@@ -28,6 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.SMLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
+import com.pss.lims.util.Helper;
 import com.pss.lims.util.Utilities;
 
 public class MyJob extends SMLoginDetails {
@@ -73,8 +74,7 @@ public class MyJob extends SMLoginDetails {
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on My Job", sno, false);
-		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#myJobListTable > div > div.jtable-busy-message[style='display: none;']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#myJobListTable > div > div.jtable-busy-message[style='display: none;']")));
 		Thread.sleep(4000);
 		methodToapproveMyJob();
 		document.close();
@@ -97,7 +97,8 @@ public class MyJob extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.id("workSheetMyJobActForm")).click();
+			Helper.scrollAndClickElement(driver, By.id("workSheetMyJobActForm"));
+			//driver.findElement(By.id("workSheetMyJobActForm")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on WorkSheet", sno, false);
 			Thread.sleep(20000);
 			String mainWindow = driver.getWindowHandle();
@@ -157,6 +158,8 @@ public class MyJob extends SMLoginDetails {
 			String[] parts = a.split(" of ");
 			try {
 				totalNoOfRecords = Integer.parseInt(parts[1].trim());
+				System.out.println(totalNoOfRecords);
+				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -202,10 +205,10 @@ public class MyJob extends SMLoginDetails {
 				}
 				noOfRecordsChecked += perPageNoOfRecordsPresent;
 				if ((!isRecordSelected) && (noOfRecordsChecked < totalNoOfRecords)) {
-					driver.findElement(By.cssSelector(
-							"#myJobListTable > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
-							.click();// next page in Document approve list
+					Helper.clickElement(driver, By.cssSelector("#myJobListTable > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"));
+//					driver.findElement(By.cssSelector("#myJobListTable > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next")).click();// next page in Document approve list
 					Thread.sleep(4000);
+					Helper.waitLoadRecords(driver, By.cssSelector("#myJobListTable > div > div.jtable-busy-message[style='display: none;']"));
 					table = driver.findElement(By.id("myJobListTable"));// Document Tree approve table
 					tableBody = table.findElement(By.tagName("tbody"));
 					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();

@@ -126,7 +126,8 @@ public class JobAllotment extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on CheckBox", sno, false);
 			Thread.sleep(3000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"nextBtnInViewJobAllotmentForm\"]/span")).click();
+			driver.findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+			//driver.findElement(By.linkText("Next")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Next", sno, false);
 			Thread.sleep(5000);
 			 try   
@@ -150,6 +151,7 @@ public class JobAllotment extends SMLoginDetails {
 			Thread.sleep(2000);
 			sno++;
 			driver.findElement(By.id("locTreeInCalPmBdm_2_switch")).click();
+									  
 			Thread.sleep(3000);
 			driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Location", sno, false);

@@ -28,8 +28,9 @@ import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Utilities;
+import com.pss.regproject.RegistrationDetails.RegistrationDetails;
 
-public class CustomerApproval extends RegistrationLoginDetails {
+public class CustomerApproval extends RegistrationDetails {
 
 	@Test
 	public void approveCustomer() throws Exception {
@@ -50,12 +51,12 @@ public class CustomerApproval extends RegistrationLoginDetails {
 		Thread.sleep(1000);
 		driver.findElement(By.name("loginPassword")).sendKeys(properties.getProperty("Password"));
 		Thread.sleep(1000);
-		Select module = new Select(driver.findElement(By.id("limsModule")));
-		Thread.sleep(1000);
-		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
-		Thread.sleep(1000);
+//		Select module = new Select(driver.findElement(By.id("limsModule")));
+//		Thread.sleep(1000);
+//		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
+//		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[3]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -66,16 +67,16 @@ public class CustomerApproval extends RegistrationLoginDetails {
 		document.add(new Paragraph("                                     "));
 		sno++;
 		WebDriverWait wait = new WebDriverWait(driver, 240);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='customerAppPageInSample.do'")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='qmsCustomerAppPage.do'")));
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='customerAppPageInSample.do'"));
+		WebElement element1 = driver.findElement(By.cssSelector("a[href='qmsCustomerAppPage.do'"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);
 		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Customer", sno, false);
 		wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.cssSelector("#customerApprovalTable > div > div.jtable-busy-message[style='display: none;']")));
-		Thread.sleep(4000);
+				By.cssSelector("#customerAppTableContainer > div > div.jtable-busy-message[style='display: none;']")));
+		Thread.sleep(2000);
 		methodToApproveCustomer();
 		document.close();
 		writer.close();
@@ -87,7 +88,7 @@ public class CustomerApproval extends RegistrationLoginDetails {
 
 	private void methodToApproveCustomer() throws Exception {
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int count = 0;
 		boolean isRecordSelected = false;
 		String customerName = properties.getProperty("Customer_Name");
@@ -102,12 +103,19 @@ public class CustomerApproval extends RegistrationLoginDetails {
 //			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Close", sno, false);
 //			Thread.sleep(3000);
 //			sno++;
-			driver.findElement(By.id("commentsInViewLimsCustomerAppWnd"))
+			
+			driver.findElement(By.xpath("//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr/td[7]/button")).click();
+			
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View and Approve", sno,
+					false);
+			Thread.sleep(4000);
+			sno++;
+			driver.findElement(By.id("customerCommentsInViewCustApp"))
 					.sendKeys(properties.getProperty("Approval_Comments"));
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Comments", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("apprBtnInCustomerApproval")).click();
+			driver.findElement(By.id("appCusAppView")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Approve", sno, false);
 			Thread.sleep(2000);
 			sno++;
@@ -144,13 +152,13 @@ public class CustomerApproval extends RegistrationLoginDetails {
 
 	private boolean selectRecordForCustomer(int count, boolean isRecordSelected, String customerName) throws Exception {
 		// TODO Auto-generated method stub
-		WebElement table = driver.findElement(By.id("customerApprovalTable"));
+		WebElement table = driver.findElement(By.id("customerAppTableContainer"));
 		WebElement tableBody = table.findElement(By.tagName("tbody"));
 		int perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
 		int totalNoOfRecords = 0;
 		int noOfRecordsChecked = 0;
 		if (perPageNoOfRecordsPresent > 0) {
-			String a = driver.findElement(By.xpath("//*[@id=\"customerApprovalTable\"]/div/div[4]/div[2]/span"))
+			String a = driver.findElement(By.xpath("//*[@id=\"customerAppTableContainer\"]/div/div[4]/div[2]/span"))
 					.getText();
 			// For
 
@@ -168,11 +176,11 @@ public class CustomerApproval extends RegistrationLoginDetails {
 			if ((totalNoOfRecords > 1) && ((customerName == null) || ("".equalsIgnoreCase(customerName)))) {
 //				System.out.println("hi this is ravi");
 				customerName = driver
-						.findElement(By.xpath("//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr[1]/td[3]"))
+						.findElement(By.xpath("//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr[1]/td[3]"))
 						.getText();// documentType
 			} else if ((customerName == null) || ("".equalsIgnoreCase(customerName))) {
 				customerName = driver
-						.findElement(By.xpath("//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr/td[3]")).getText();// document
+						.findElement(By.xpath("//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr/td[3]")).getText();// document
 																														// type
 			}
 			++count;
@@ -183,11 +191,11 @@ public class CustomerApproval extends RegistrationLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String customerNameSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
+										"//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
 								.getText();// documentTypeName
 						if (customerName.equalsIgnoreCase(customerNameSequence)) {
 							driver.findElement(By.xpath(
-									"//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
+									"//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr[ " + i + " ]/td[3]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -198,11 +206,11 @@ public class CustomerApproval extends RegistrationLoginDetails {
 					}
 				} else {
 					String customerNameSequence = driver
-							.findElement(By.xpath("//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr/td[3]"))
+							.findElement(By.xpath("//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr/td[3]"))
 							.getText();
 					if (customerName.equalsIgnoreCase(customerNameSequence)) {
 						driver.findElement(
-								By.xpath("//*[@id=\"customerApprovalTable\"]/div/table/tbody/tr/td[3]")).click();
+								By.xpath("//*[@id=\"customerAppTableContainer\"]/div/table/tbody/tr/td[3]")).click();
 						isRecordSelected = true;
 						break;
 					}
@@ -213,7 +221,7 @@ public class CustomerApproval extends RegistrationLoginDetails {
 							"#customerApprovalTable > div > div.jtable-bottom-panel > div.jtable-left-area > span.jtable-page-list > span.jtable-page-number-next"))
 							.click();// next page in Document approve list
 					Thread.sleep(4000);
-					table = driver.findElement(By.id("customerApprovalTable"));// Document Tree approve table
+					table = driver.findElement(By.id("customerAppTableContainer"));// Document Tree approve table
 					tableBody = table.findElement(By.tagName("tbody"));
 					perPageNoOfRecordsPresent = tableBody.findElements(By.tagName("tr")).size();
 				}

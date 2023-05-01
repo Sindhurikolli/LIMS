@@ -86,10 +86,14 @@ public class QuantativeJobResults extends SMLoginDetails {
 	}
 
 	private void methodToapproveJobResults() throws Exception {
-
+		driver.findElement(By.id("ARNumSearchInJobResults")).sendKeys(properties.getProperty("AR_Number"));
+		Thread.sleep(1000);
+		driver.findElement(By.id("searchBtnInJobResults")).click();
+		document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Search", sno, false);
+		Thread.sleep(1000);
 		int count = 0;
 		boolean isRecordSelected = false;
-		String arNumber = properties.getProperty("AR_Number");
+		String arNumber = properties.getProperty("AR_Number");	
 		isRecordSelected = selectRecordForJobResults(count, isRecordSelected, arNumber);
 		if (isRecordSelected) {
 			sno++;
@@ -97,7 +101,11 @@ public class QuantativeJobResults extends SMLoginDetails {
 					false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("evaluateBtnInSampleResult")).click();
+			JavascriptExecutor jse111 = (JavascriptExecutor) driver;
+			WebElement element111 = driver.findElement(By.id("evaluateBtnInSampleResult"));
+			jse111.executeScript("arguments[0].scrollIntoView(true);", element111);
+			Thread.sleep(1000);
+			jse111.executeScript("arguments[0].click();", element111);
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Evaluate", sno, false);
 			Thread.sleep(3000);
 			int noofVariables = Integer.parseInt(properties.getProperty("No_of_variables"));
@@ -187,7 +195,7 @@ public class QuantativeJobResults extends SMLoginDetails {
 		}
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
-				arNumber = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[1]/td[6]"))
+				arNumber = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[6]"))
 						.getText();
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
 				arNumber = driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[6]"))
@@ -206,7 +214,7 @@ public class QuantativeJobResults extends SMLoginDetails {
 								.getText();// documentTypeName
 						if (arNumber.contains(arNumberSequence)) {
 							driver.findElement(
-									By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[2]/input"))
+									By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr[" + i + "]/td[6]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -219,7 +227,7 @@ public class QuantativeJobResults extends SMLoginDetails {
 					String arNumberSequence = driver
 							.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[6]")).getText();
 					if (arNumber.contains(arNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[2]/input"))
+						driver.findElement(By.xpath("//*[@id=\"jobResultsJTable\"]/div/table/tbody/tr/td[6]"))
 								.click();
 						isRecordSelected = true;
 						break;
