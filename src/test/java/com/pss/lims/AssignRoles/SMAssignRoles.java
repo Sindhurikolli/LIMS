@@ -27,7 +27,7 @@ public class SMAssignRoles extends LIMSLogin {
 		Thread.sleep(1000);
 		module.selectByVisibleText(properties.getProperty("SM_Module"));
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//*[@id=\"loginform\"]/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id=\"loginform\"]/div[4]/button[1]")).click();
 		Thread.sleep(2000);
 //		WebDriverWait wait = new WebDriverWait(driver, 200);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='createRolePageInSample.do']")));

@@ -190,7 +190,15 @@ public class Product extends RegistrationDetails {
 			JavascriptExecutor jse6 = (JavascriptExecutor) driver;
 			WebElement element6 = driver.findElement(By.id("selBtnToAddCustomersInProdReg"));
 			jse6.executeScript("arguments[0].click();", element6);
-			driver.findElement(By.xpath(".//*[@id='customerTableInProdRegnWin']/div/div[4]/table/tbody/tr[5]/td[1]")).click();
+			sno++;
+			driver.findElement(By.id("customerNameInSelCustWdw")).sendKeys(properties.getProperty("Customer_Name"));
+			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Enter Customer Name", sno, false);
+			JavascriptExecutor jse61 = (JavascriptExecutor) driver;
+			WebElement element61 = driver.findElement(By.id("searchBtnInCustomerWin"));
+			jse61.executeScript("arguments[0].click();", element61);
+			Thread.sleep(2000);
+			
+			driver.findElement(By.xpath(".//*[@id='customerTableInProdRegnWin']/div/div[4]/table/tbody/tr/td[3]")).click();
 			driver.findElement(By.id("SelBtnInCustomerWin")).click();
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Customer Details", sno,
 					false);

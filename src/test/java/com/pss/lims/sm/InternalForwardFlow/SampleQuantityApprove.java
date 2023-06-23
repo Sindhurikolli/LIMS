@@ -54,7 +54,7 @@ public class SampleQuantityApprove extends SMLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		Thread.sleep(5000);
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
@@ -165,11 +165,11 @@ public class SampleQuantityApprove extends SMLoginDetails {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
 //				System.out.println("hi this is ravi");
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[1]/td[28]"))
+						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[1]/td[29]"))
 						.getText();// documentType
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[28]"))
+						.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[29]"))
 						.getText();// document
 									// type
 			}
@@ -180,11 +180,10 @@ public class SampleQuantityApprove extends SMLoginDetails {
 				if (totalNoOfRecords > 1) {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String arNumberSequence = driver.findElement(By.xpath(
-								"//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[28]"))
+								"//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ " + i + " ]/td[29]"))
 								.getText();// documentTypeName
 						if (arNumber.equalsIgnoreCase(arNumberSequence)) {
-							driver.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr[ "
-									+ i + " ]/td[33]/button")).click();
+							driver.findElement(By.id("renderSampQuantAppInAppBtn")).click();
 							isRecordSelected = true;
 							break;
 						}
@@ -194,7 +193,7 @@ public class SampleQuantityApprove extends SMLoginDetails {
 					}
 				} else {
 					String arNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[28]"))
+							.findElement(By.xpath("//*[@id=\"sampleQuantityApprovalGrid\"]/div/table/tbody/tr/td[29]"))
 							.getText();
 					if (arNumber.equalsIgnoreCase(arNumberSequence)) {
 						driver.findElement(By.id("renderSampQuantAppInAppBtn")).click();

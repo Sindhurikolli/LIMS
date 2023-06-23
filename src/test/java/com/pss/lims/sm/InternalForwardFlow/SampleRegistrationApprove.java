@@ -54,7 +54,7 @@ public class SampleRegistrationApprove extends SMLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -178,11 +178,11 @@ public class SampleRegistrationApprove extends SMLoginDetails {
 								"//*[@id=\"limsSampleRegApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[30]"))
 								.getText();// documentTypeName//*[@id="limsSampleRegApprovalJtable"]/div/table/tbody/tr[3]/td[46]
 						if (arNumber.contains(arNumberSequence)) {
-							driver.findElement(By.xpath("//*[@id=\"limsSampleRegApprovalJtable\"]/div/table/tbody/tr[ "
-									+ i + " ]/td[46]/button")).click();
+							driver.findElement(By.xpath("//*[@id=\"renderSampRegAppInAppBtn\"]")).click();
 							isRecordSelected = true;
 							break;
 						}
+						
 					}
 					if (isRecordSelected) {
 						break;

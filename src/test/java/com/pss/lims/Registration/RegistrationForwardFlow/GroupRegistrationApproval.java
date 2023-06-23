@@ -55,7 +55,7 @@ public class GroupRegistrationApproval extends RegistrationLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));

@@ -110,7 +110,7 @@ public class QualitativeTestReg extends RegistrationLoginDetails {
 		sno++;
 		int count = 0;
 		boolean isRecordSelected = false;
-		String product = properties.getProperty("Product_Code");
+		String product = properties.getProperty("RMProduct_Code");
 		isRecordSelected = selectRecordForProduct(count, isRecordSelected, product);
 		if (isRecordSelected) {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select Record", sno, false);

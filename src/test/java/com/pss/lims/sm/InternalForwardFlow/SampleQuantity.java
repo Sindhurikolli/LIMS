@@ -55,7 +55,7 @@ public class SampleQuantity extends SMLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -174,10 +174,10 @@ public class SampleQuantity extends SMLoginDetails {
 			if ((totalNoOfRecords > 1) && ((arNumber == null) || ("".equalsIgnoreCase(arNumber)))) {
 //				System.out.println("hi this is ravi");
 				arNumber = driver
-						.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
+						.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[20]"))
 						.getText();// documentType
 			} else if ((arNumber == null) || ("".equalsIgnoreCase(arNumber))) {
-				arNumber = driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr/td[19]"))
+				arNumber = driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr/td[20]"))
 						.getText();// document
 									// type
 			}
@@ -189,11 +189,11 @@ public class SampleQuantity extends SMLoginDetails {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						String arNumberSequence = driver
 								.findElement(By.xpath(
-										"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[19]"))
+										"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[20]"))
 								.getText();// documentTypeName
 						if (arNumber.equalsIgnoreCase(arNumberSequence)) {
 							driver.findElement(By.xpath(
-									"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[19]"))
+									"//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[ " + i + " ]/td[20]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -204,10 +204,10 @@ public class SampleQuantity extends SMLoginDetails {
 					}
 				} else {
 					String arNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
+							.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[20]"))
 							.getText();
 					if (arNumber.equalsIgnoreCase(arNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[19]"))
+						driver.findElement(By.xpath("//*[@id=\"limsSamplequantityGrid\"]/div/table/tbody/tr[1]/td[20]"))
 								.click();
 						isRecordSelected = true;
 						break;

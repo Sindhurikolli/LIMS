@@ -98,7 +98,7 @@ public class SpecificationApproval extends RegistrationDetails {
 					false);
 			Thread.sleep(4000);
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[9]/button")).click();
+			driver.findElement(By.xpath("//*[@id=\"qmsSpecificationRegApprovalGrid\"]/div/table/tbody/tr/td[15]/button")).click();
 			
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View", sno,
 					false);

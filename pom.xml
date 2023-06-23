@@ -15,8 +15,8 @@
 
 		<jre.level>1.8</jre.level>
 		<jdk.level>1.8</jdk.level>
-	<ADMINURL>http://192.168.1.110:5151/ADMIN</ADMINURL>
-	<LIMSLoginUrl>http://192.168.1.110:6363/LIMS</LIMSLoginUrl>
+	<ADMINURL>http://192.168.1.110:8090/ADMINTEST</ADMINURL>
+	<LIMSLoginUrl>http://192.168.1.110:8093/LIMSTEST</LIMSLoginUrl>
 	<REGISTRATIONLoginUrl>http://192.168.1.110:5151/REGISTRATION/Login.do</REGISTRATIONLoginUrl>
 	</properties>
 	<build>

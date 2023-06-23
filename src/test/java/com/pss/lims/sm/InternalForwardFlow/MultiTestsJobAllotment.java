@@ -56,7 +56,7 @@ public class MultiTestsJobAllotment extends SMLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -162,7 +162,7 @@ public class MultiTestsJobAllotment extends SMLoginDetails {
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Click on Browse", sno, false);
 			Thread.sleep(2000);
 			sno++;
-			driver.findElement(By.id("locTreeInCalPmBdm_4_switch")).click();
+			driver.findElement(By.id("locTreeInCalPmBdm_3_switch")).click();
 									  
 			Thread.sleep(3000);
 			driver.findElement(By.linkText(properties.getProperty("Location_Name"))).click();

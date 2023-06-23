@@ -28,8 +28,8 @@ import com.pss.lims.ExtentTestNGPkg.Utility;
 import com.pss.lims.login.RegistrationLoginDetails;
 import com.pss.lims.util.HeaderFooterPageEvent;
 import com.pss.lims.util.Utilities;
-
-public class SupplierApproval extends RegistrationLoginDetails {
+import com.pss.regproject.RegistrationDetails.RegistrationDetails;
+public class SupplierApproval extends RegistrationDetails {
 
 	@Test
 	public void approveSupplier() throws Exception {
@@ -49,13 +49,14 @@ public class SupplierApproval extends RegistrationLoginDetails {
 		driver.findElement(By.name("loginUserName")).sendKeys(properties.getProperty("Approver_Login"));
 		Thread.sleep(1000);
 		driver.findElement(By.name("loginPassword")).sendKeys(properties.getProperty("Password"));
-		Thread.sleep(1000);
-		Select module = new Select(driver.findElement(By.id("limsModule")));
-		Thread.sleep(1000);
-		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
+		//Thread.sleep(1000);
+//		
+//		Select module = new Select(driver.findElement(By.id("limsModule")));
+//		Thread.sleep(1000);
+//		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[3]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -66,9 +67,9 @@ public class SupplierApproval extends RegistrationLoginDetails {
 		document.add(new Paragraph("                                     "));
 		sno++;
 		WebDriverWait wait = new WebDriverWait(driver, 240);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='supplierAppPageInSample.do'")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='regSupplierApprovePage.do'")));
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		WebElement element1 = driver.findElement(By.cssSelector("a[href='supplierAppPageInSample.do'"));
+		WebElement element1 = driver.findElement(By.cssSelector("a[href='regSupplierApprovePage.do'"));
 		jse1.executeScript("arguments[0].scrollIntoView(true);", element1);
 		Thread.sleep(1000);
 		jse1.executeScript("arguments[0].click();", element1);

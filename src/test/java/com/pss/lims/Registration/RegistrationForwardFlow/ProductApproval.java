@@ -99,7 +99,7 @@ public class ProductApproval extends RegistrationDetails {
 			Thread.sleep(4000);
 			
 			sno++;
-			driver.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[10]/button")).click();
+			driver.findElement(By.xpath("//*[@id=\"qmsProductApprovalGrid\"]/div/table/tbody/tr/td[14]/button")).click();
 			
 			document = Utilities.getScreenShotAndAddInLogDoc(driver, document, "Select a Record and Click on View", sno,
 					false);

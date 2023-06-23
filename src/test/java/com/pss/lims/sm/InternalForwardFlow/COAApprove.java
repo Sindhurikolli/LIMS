@@ -56,7 +56,7 @@ public class COAApprove extends SMLoginDetails {
 		module.selectByVisibleText(properties.getProperty("Lims_Module_Name1"));
 		Thread.sleep(1000);
 		input = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		driver.findElement(By.xpath("//*[@id='loginform']/div[7]/input")).click();
+		driver.findElement(By.xpath("//*[@id='loginform']/div[4]/button[1]")).click();
 		im = Image.getInstance(input);
 		im.scaleToFit((PageSize.A4.getWidth() - (PageSize.A4.getWidth() / 8)),
 				(PageSize.A4.getHeight() - (PageSize.A4.getHeight() / 8)));
@@ -170,11 +170,11 @@ public class COAApprove extends SMLoginDetails {
 		if (perPageNoOfRecordsPresent > 0 && count == 0) {
 			if ((totalNoOfRecords > 1) && ((aRNumber == null) || ("".equalsIgnoreCase(aRNumber)))) {
 				aRNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[1]/td[4]"))
+						.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[1]/td[8]"))
 						.getText();// documentType
 			} else if ((aRNumber == null) || ("".equalsIgnoreCase(aRNumber))) {
 				aRNumber = driver
-						.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[4]"))
+						.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[8]"))
 						.getText();// document
 				// type
 			}
@@ -185,15 +185,15 @@ public class COAApprove extends SMLoginDetails {
 				if (totalNoOfRecords > 1) {
 					for (int i = 1; i <= perPageNoOfRecordsPresent; i++) {
 						JavascriptExecutor js0 = (JavascriptExecutor)driver;
-						WebElement imLinkText = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[4]"));
+						WebElement imLinkText = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[8]"));
 						js0.executeScript("arguments[0].scrollIntoView();", imLinkText);
 						Thread.sleep(2000);
-						String aRNumberSequence = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[4]"))
+						String aRNumberSequence = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[8]"))
 								.getText();// documentTypeName//*[@id="sampleResultApprovalJtable"]/div/table/tbody/tr/td[4]
 						if (aRNumber.equalsIgnoreCase(aRNumberSequence)) {
 						 
 							driver.findElement(By.xpath(
-									"//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[4]"))
+									"//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr[ " + i + " ]/td[8]"))
 									.click();
 							isRecordSelected = true;
 							break;
@@ -204,14 +204,14 @@ public class COAApprove extends SMLoginDetails {
 					}
 				} else {
 					JavascriptExecutor js0 = (JavascriptExecutor)driver;
-					WebElement imLinkText = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[4]"));
+					WebElement imLinkText = driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[8]"));
 					js0.executeScript("arguments[0].scrollIntoView();", imLinkText);
 					Thread.sleep(2000);
 					String aRNumberSequence = driver
-							.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[4]"))
+							.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[8]"))
 							.getText();
 					if (aRNumber.equalsIgnoreCase(aRNumberSequence)) {
-						driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[4]"))
+						driver.findElement(By.xpath("//*[@id=\"sampleResultApprovalJtable\"]/div/table/tbody/tr/td[8]"))
 								.click();
 						isRecordSelected = true;
 						break;
